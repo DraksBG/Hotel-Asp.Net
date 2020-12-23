@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Text;
+using Hotel.Data.Common.Models;
+
+namespace Hotel.Data.Models
+{
+   public class Picture : BaseDeletableModel<string>
+    {
+        public Picture()
+        {
+            this.Id = Guid.NewGuid().ToString();
+        }
+        
+        [Required]
+        public string Url { get; set; }
+
+        public string RoomId { get; set; }
+
+        public virtual Room Room { get; set; }
+    }
+}
