@@ -1,3 +1,4 @@
+﻿namespace Hotel.Data.Models.Enums
 {
     public enum RoomType
     {
