@@ -40,5 +40,7 @@ namespace Hotel.Data.Models
         public bool HasHeater { get; set; }
 
         [Required] public virtual ICollection<Picture> Pictures { get; set; }
+
+        public RoomType RoomType { get; set; }
     }
 }
