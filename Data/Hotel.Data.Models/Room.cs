@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using Hotel.Data.Common.Models;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-
-namespace Hotel.Data.Models
+﻿namespace Hotel.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Text;
+
+    using Hotel.Data.Common.Models;
+    using Hotel.Data.Models.Enums;
+    using Microsoft.EntityFrameworkCore.Diagnostics;
+
     public class Room:BaseDeletableModel<string>
     {
         public Room()
@@ -32,6 +34,8 @@ namespace Hotel.Data.Models
         public bool HasMountainView { get; set; }
 
         public bool HasWifi { get; set; }
+
+        public bool HasTv { get; set; }
 
         public bool HasPhone { get; set; }
 
