@@ -1,4 +1,5 @@
-﻿using Hotel.Services.Data.Cloudinary;
+﻿using CloudinaryDotNet;
+using Hotel.Services.Data.Cloudinary;
 using Hotel.Services.Data.User;
 
 namespace Hotel.Web
@@ -67,7 +68,8 @@ namespace Hotel.Web
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<IUsersService, UsersService>();
-
+            services.AddTransient<IPictureService, PictureService>();
+            services.AddTransient<IRoomsService, RoomsService>();
 
 
 
