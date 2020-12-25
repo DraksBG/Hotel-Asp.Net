@@ -24,7 +24,19 @@
         {
         }
 
-        
+        public DbSet<Room> Rooms { get; set; }
+
+        public DbSet<Picture> Pictures { get; set; }
+
+        public DbSet<RoomReservation> RoomReservations { get; set; }
+
+        public DbSet<ConferenceHall> ConferenceHalls { get; set; }
+
+        public DbSet<ConferenceHallReservation> ConferenceHallReservations { get; set; }
+
+        public DbSet<Restaurant> Restaurants { get; set; }
+
+        public DbSet<RestaurantReservation> RestaurantReservations { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 
