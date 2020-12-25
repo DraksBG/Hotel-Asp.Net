@@ -1,4 +1,5 @@
-﻿using Hotel.Services.Data.User;
+﻿using Hotel.Services.Data.Cloudinary;
+using Hotel.Services.Data.User;
 
 namespace Hotel.Web
 {
@@ -66,6 +67,20 @@ namespace Hotel.Web
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<IUsersService, UsersService>();
+
+
+
+
+            services.AddTransient<ICloudinaryService, CloudinaryService>();
+
+            Account cloudinaryCredentials = new Account(
+                this.configuration["Cloudinary:CloudName"],
+                this.configuration["Cloudinary:ApiKey"],
+                this.configuration["Cloudinary:ApiSecret"]);
+
+            Cloudinary cloudinaryUtility = new Cloudinary(cloudinaryCredentials);
+
+            services.AddSingleton(cloudinaryUtility);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
