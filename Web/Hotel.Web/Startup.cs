@@ -1,4 +1,6 @@
-﻿namespace Hotel.Web
+﻿using Hotel.Services.Data.User;
+
+namespace Hotel.Web
 {
     using System.Reflection;
 
@@ -63,6 +65,7 @@
 
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
+            services.AddTransient<IUsersService, UsersService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
