@@ -12,7 +12,9 @@
         public const string CountOfPeopleInRoomLength = "The number must be between 1 and 10.";
         public const string CheckDateTimeAttribute = "Please enter date after today";
         public const string ContentMessageMaxLength = "The field can contain no more than 300 characters";
-
+        public const string ConfHallReserveGuestsMax = "The number must be between 1 and 100";
+        public const string InvalidEmail = "Invailid email adress";
+        public const string InvalidPhoneNumber = "Invalid phone number";
 
 
         public const string InvalidOperationExceptionInPictureService = "Exception happened in PictureService while saving the Picture in IDeletableEntityRepository<Picture>";
@@ -29,5 +31,9 @@
         public const string InvalidOperationExceptionForRoomReservation = "Exception happened in RoomsService while saving the Reservation in IDeletableEntityRepository<RoomReservation>";
 
         public const string InvalidOperationExceptionForRoomCreate = "Exception happened in RoomsService while creating room in IDeletableEntityRepository<Room>";
+
+        public const string InvalidOperationExceptionForConferenceHallGetAllReservations = "Exception happened in ConferenceHallService while getting all reservations for current user from IDeletableEntityRepository<ConferenceHallReservations>";
+
+        public const string InvalidOperationExceptionForConferenceHallGetAllReservationsForAdmin = "Exception happened in ConferenceHallService while getting all reservations for admin IDeletableEntityRepository<ConferenceHallReservations>";
     }
 }
