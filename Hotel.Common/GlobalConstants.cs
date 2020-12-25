@@ -15,6 +15,7 @@
         public const string ConfHallReserveGuestsMax = "The number must be between 1 and 100";
         public const string InvalidEmail = "Invailid email adress";
         public const string InvalidPhoneNumber = "Invalid phone number";
+        public const string RestaurantReserveGuestsMax = "The number must be between 1 and 100";
 
 
         public const string InvalidOperationExceptionInPictureService = "Exception happened in PictureService while saving the Picture in IDeletableEntityRepository<Picture>";
