@@ -36,5 +36,9 @@
         public const string InvalidOperationExceptionForConferenceHallGetAllReservations = "Exception happened in ConferenceHallService while getting all reservations for current user from IDeletableEntityRepository<ConferenceHallReservations>";
 
         public const string InvalidOperationExceptionForConferenceHallGetAllReservationsForAdmin = "Exception happened in ConferenceHallService while getting all reservations for admin IDeletableEntityRepository<ConferenceHallReservations>";
+        public const string InvalidOperationExceptionForRestaurantGetAllReservations = "Exception happened in RestaurantService while getting all reservations for current user from IDeletableEntityRepository<RestaurantReservations>";
+        public const string InvalidOperationExceptionForRestaurantReservation = "Exception happened in RestaurantService while saving the Reservation in IDeletableEntityRepository<RestaurantReservation>";
+
+        public const string InvalidOperationExceptionForRestaurantGetAllReservationsForAdmin = "Exception happened in RestaurantService while getting all reservations for admin from IDeletableEntityRepository<RestaurantReservations>";
     }
 }
