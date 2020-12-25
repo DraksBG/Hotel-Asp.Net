@@ -1,10 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace Hotel.Data.Models.Enums
 {
-    class RestaurantEventType
+    public enum RestaurantEventType
     {
+        Dinner = 1,
+        Wedding = 2,
+        Prom = 3,
+        Birthday = 4,
+        ChildrensParty = 5,
     }
 }
