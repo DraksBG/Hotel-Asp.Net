@@ -24,6 +24,9 @@
         public const string EditRoomTempDataSuccess = "Room updated successfuly!";
         public const string ContactFormTitleMaxLength = "The field must have minimum of 30 characters";
         public const string SuccessfullySentAnEmail = "You have successfully sent an email! Please check your mailbox for a reply!";
+        public const string FreeSeatsForHallError = "The available seats for this date is ";
+        public const string ReserveConferenceHallTempDataSuccess = "You successfully booked a conference hall!";
+
 
 
         public const string InvalidOperationExceptionInPictureService = "Exception happened in PictureService while saving the Picture in IDeletableEntityRepository<Picture>";
