@@ -1,5 +1,7 @@
 ﻿using CloudinaryDotNet;
 using Hotel.Services.Data.Cloudinary;
+using Hotel.Services.Data.Picture;
+using Hotel.Services.Data.Room;
 using Hotel.Services.Data.User;
 
 namespace Hotel.Web
