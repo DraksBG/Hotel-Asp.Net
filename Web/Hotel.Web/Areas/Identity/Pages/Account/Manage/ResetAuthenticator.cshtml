@@ -1,0 +1,27 @@
+﻿@page
+@using Hotel.Web.Areas.Identity.Pages.Account.Manage
+@model Hotel.Web.Areas.Identity.Pages.Account.Manage.ResetAuthenticatorModel
+@{
+    ViewData["Title"] = "Reset authenticator key";
+    ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
+}
+
+<partial name="_StatusMessages" for="StatusMessage" />
+<h4>Reset the key for authentication</h4>
+<div class="alert alert-warning" role="alert">
+    <p>
+        <span class="glyphicon glyphicon-warning-sign"></span>
+        <strong>If you reset your key for authentication, your application won't work for until you configure it again.</strong>
+    </p>
+    <p>
+        That process will deactivate 2FA, until you confirm on your application.
+        If you don't finish configuring your application for authentication, you may lose access to your account.
+    </p>
+</div>
+<div>
+    <form id="reset-authenticator-form" method="post" class="form-group">
+        <button id="reset-authenticator-button" class="btn btn-danger" type="submit">
+            Reset the key for authentication
+        </button>
+    </form>
+</div>
