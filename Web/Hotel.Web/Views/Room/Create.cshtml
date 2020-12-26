@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "Create room";
+}
+@model Hotel.Web.ViewModels.InputModels.Room.CreateRoomInputModel
+<section id="conferenceHallReserveForm">
+    <div class="container">
+        <div id="reserveHeader" class="d-flex justify-content-center">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Create Room</h2>
+                </div>
+            </div>
+        </div>
+        <div id="createRoomHeader" class="d-flex justify-content-center">
+            <div class="row">
+                <div class="col-lg-12">
+                    <form enctype="multipart/form-data" asp-controller="Room" asp-action="Create">
+                        <div class="form-check">
+                            <label>Type of room</label>
+                            <select class="form-control" asp-for="RoomType">
+                                <option value="1">Single</option>
+                                <option value="2">Double</option>
+                                <option value="3">Apartment</option>
+                            </select>
+                        </div>
+                        <span asp-validation-for="RoomType" class="text-danger"></span>
+
+                        <div class="form-check">
+                            <label>Price</label>
+                            <input class="form-control" asp-for="Price">
+                        </div>
+                        <span asp-validation-for="Price" class="text-danger"></span>
+
+                        <div class="form-check">
+                            <label>Bed count</label>
+                            <input class="form-control" asp-for="NumberOfBeds">
+                        </div>
+                        <span asp-validation-for="NumberOfBeds" class="text-danger"></span>
+
+                        <div class="form-check">
+                            <label>Bathroom</label>
+                            <input type="checkbox" asp-for="HasBathroom">
+                        </div>
+                        <div class="form-check">
+                            <label>Room service</label>
+                            <input type="checkbox" asp-for="HasRoomService">
+                        </div>
+                        <div class="form-check">
+                            <label>View towards the see</label>
+                            <input type="checkbox" asp-for="HasSeaView">
+                        </div>
+                        <div class="form-check">
+                            <label>View towards the mountain</label>
+                            <input type="checkbox" asp-for="HasMountainView">
+                        </div>
+                        <div class="form-check">
+                            <label>Wi-Fi</label>
+                            <input type="checkbox" asp-for="HasWifi">
+                        </div>
+                        <div class="form-check">
+                            <label>TV</label>
+                            <input type="checkbox" asp-for="HasTv">
+                        </div>
+                        <div class="form-check">
+                            <label>Phone</label>
+                            <input type="checkbox" asp-for="HasPhone">
+                        </div>
+                        <div class="form-check">
+                            <label>Air conditioning</label>
+                            <input type="checkbox" asp-for="HasAirConditioner">
+                        </div>
+                        <div class="form-check">
+                            <label>Heating</label>
+                            <input type="checkbox" asp-for="HasHeater">
+                        </div>
+
+                        <div class="form-check">
+                            <input multiple asp-for="Pictures" type="file" class="btn right:50px">
+                        </div>
+                        <span asp-validation-for="Pictures" class="text-danger"></span>
+
+                        <input type="submit" value="Create Room" class="btn btn-outline-dark" asp-area="" asp-controller="Room" asp-action="Create">
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
