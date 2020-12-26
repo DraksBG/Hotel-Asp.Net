@@ -28,10 +28,11 @@
                 <div class="row w-100">
                     <div class="col-4 pl-lg-0">
                         <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link active" href="#">Home<span class="sr-only">(current)</span></a></li>
+                            <li class="nav-item"><a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">Home<span class="sr-only">(current)</span></a></li>
                             <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Room" asp-action="All">Rooms</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Reserve</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Restaurant</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Room" asp-action="All">Reserve</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Restaurant" asp-action="Index">Restaurant</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Contact" asp-action="Index">Contacts</a></li>
                         </ul>
                     </div>
                     <div class="col-4 navbar-nav text-center pr-0 d-none d-lg-block"><a class="navbar-brand mr-0" href="#">Hotel</a></div>
@@ -42,9 +43,9 @@
                                    Venues
                                 </button>
                                 <div class="dropdown-menu">
-                                    <li class="nav-item"><a class="nav-link" href="#">Spa</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Conference Hall</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#">Fitness</a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Spa" asp-action="Index">Spa</a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-controller="ConferenceHall" asp-action="Index">Conference Hall</a></li>
+                                    <li class="nav-item"><a class="nav-link" asp-area="" asp-controller="Fitness" asp-action="Index">Fitness</a></li>
                                 </div>
                             </div>
                             <li class="nav-item"><partial name="_LoginPartial"/></li>
