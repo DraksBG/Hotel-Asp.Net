@@ -87,7 +87,7 @@ namespace Hotel.Web.Areas.Identity.Pages.Account.Manage
             }
 
             await _signInManager.RefreshSignInAsync(user);
-            StatusMessage = "Профила ви е обновен";
+            StatusMessage = "Your profile is updated";
             return RedirectToPage();
         }
     }
