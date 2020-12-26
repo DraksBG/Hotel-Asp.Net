@@ -44,15 +44,15 @@ namespace Hotel.Web.Areas.Identity.Pages.Account
         {
             [Required]
             [EmailAddress]
-            [Display(Name = "Имейл")]
+            [Display(Name = "Email")]
             public string Email { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
-            [Display(Name = "Парола")]
+            [Display(Name = "Password")]
             public string Password { get; set; }
 
-            [Display(Name = "Запомни ме")]
+            [Display(Name = "Remeber me")]
             public bool RememberMe { get; set; }
         }
 
