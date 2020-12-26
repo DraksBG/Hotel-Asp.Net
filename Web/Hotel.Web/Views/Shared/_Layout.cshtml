@@ -37,10 +37,18 @@
                     <div class="col-4 navbar-nav text-center pr-0 d-none d-lg-block"><a class="navbar-brand mr-0" href="#">Hotel</a></div>
                     <div class="col-4 pr-lg-0">
                         <ul class="navbar-nav justify-content-end">
-                            <li class="nav-item"><a class="nav-link" href="#">Spa</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Conference Hall</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">Fitness</a></li>
-                            <li class="nav-item"><partial name="_LoginPartial" /></li>
+                            <div class="dropdown">
+                                <button type="button" class="btn text-dark dropdown-toggle" data-toggle="dropdown">
+                                   Venues
+                                </button>
+                                <div class="dropdown-menu">
+                                    <li class="nav-item"><a class="nav-link" href="#">Spa</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Conference Hall</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#">Fitness</a></li>
+                                </div>
+                            </div>
+                            <li class="nav-item"><partial name="_LoginPartial"/></li>
+
                         </ul>
                     </div>
                 </div>
