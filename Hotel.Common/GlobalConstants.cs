@@ -16,6 +16,9 @@
         public const string InvalidEmail = "Invailid email adress";
         public const string InvalidPhoneNumber = "Invalid phone number";
         public const string RestaurantReserveGuestsMax = "The number must be between 1 and 100";
+        public const string EnterValidNumberOfGuestsError = "Maximum capacity of guests ";
+        public const string EnterAtleastOneNightStandsError = "PLease enter a date with atleast one night"; 
+        public const string ReserveRoomTempDataSuccess = "You successfully booked a room!";
 
 
         public const string InvalidOperationExceptionInPictureService = "Exception happened in PictureService while saving the Picture in IDeletableEntityRepository<Picture>";
