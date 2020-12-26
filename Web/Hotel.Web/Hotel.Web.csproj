@@ -37,4 +37,8 @@
     <ProjectReference Include="..\Hotel.Web.Infrastructure\Hotel.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\Hotel.Web.ViewModels\Hotel.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Pages\Account\Manage\" />
+  </ItemGroup>
 </Project>
