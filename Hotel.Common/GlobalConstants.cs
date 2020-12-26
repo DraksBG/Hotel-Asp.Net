@@ -22,6 +22,8 @@
         public const string CreateRoomTempDataSuccess = "Room created successfuly!";
         public const string DeleteRoomTempDataSuccess = "Room deleted successfuly!";
         public const string EditRoomTempDataSuccess = "Room updated successfuly!";
+        public const string ContactFormTitleMaxLength = "The field must have minimum of 30 characters";
+        public const string SuccessfullySentAnEmail = "You have successfully sent an email! Please check your mailbox for a reply!";
 
 
         public const string InvalidOperationExceptionInPictureService = "Exception happened in PictureService while saving the Picture in IDeletableEntityRepository<Picture>";
