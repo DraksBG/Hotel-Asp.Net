@@ -1,0 +1,48 @@
+﻿@page
+@using Hotel.Web.Areas.Identity.Pages.Account
+@model RegisterModel
+@{
+    ViewData["Title"] = "Registration";
+}
+<link rel="stylesheet" href="~/css/style.scss">
+<link rel="stylesheet" href="~/css/style.css">
+
+<div id="userAccountView">
+    <div class="col-lg-12">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h4>Create an account</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <input asp-for="Input.FirstName" class="form-control" placeholder="Name" />
+                <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Input.LastName" class="form-control" placeholder="Surename" />
+                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Input.Email" class="form-control" placeholder="Email" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Phone number" />
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Input.Password" class="form-control" placeholder="Password" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Confirm password" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button id="userAccountViewButton" type="submit" class="btn btn-outline-dark">Register</button>
+        </form>
+    </div>
+    
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
