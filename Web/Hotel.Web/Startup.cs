@@ -1,5 +1,6 @@
 ﻿using CloudinaryDotNet;
 using Hotel.Services.Data.Cloudinary;
+using Hotel.Services.Data.ConferenceHall;
 using Hotel.Services.Data.Picture;
 using Hotel.Services.Data.Room;
 using Hotel.Services.Data.User;
@@ -72,6 +73,7 @@ namespace Hotel.Web
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IPictureService, PictureService>();
             services.AddTransient<IRoomsService, RoomsService>();
+            services.AddTransient<IConferenceHallService, ConferenceHallService>(); 
 
 
 
