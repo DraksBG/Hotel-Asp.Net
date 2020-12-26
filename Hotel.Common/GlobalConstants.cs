@@ -19,6 +19,9 @@
         public const string EnterValidNumberOfGuestsError = "Maximum capacity of guests ";
         public const string EnterAtleastOneNightStandsError = "PLease enter a date with atleast one night"; 
         public const string ReserveRoomTempDataSuccess = "You successfully booked a room!";
+        public const string CreateRoomTempDataSuccess = "Room created successfuly!";
+        public const string DeleteRoomTempDataSuccess = "Room deleted successfuly!";
+        public const string EditRoomTempDataSuccess = "Room updated successfuly!";
 
 
         public const string InvalidOperationExceptionInPictureService = "Exception happened in PictureService while saving the Picture in IDeletableEntityRepository<Picture>";
