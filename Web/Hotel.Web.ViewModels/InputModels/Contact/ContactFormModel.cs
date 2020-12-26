@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using GuestHouse.Common;
 
-namespace GuestHouse.Web.ViewModels.InputModels.Contact
 {
     public class ContactFormModel
     {
