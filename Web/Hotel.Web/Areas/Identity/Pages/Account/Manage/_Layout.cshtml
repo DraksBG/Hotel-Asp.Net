@@ -1,0 +1,25 @@
+﻿@{
+    //Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Управление на вашия акаунт</h1>
+
+<div>
+    <h4>
+        Променете настройките на вашия акаунт
+    </h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-3">
+            <partial name="_ManageNav" />
+        </div>
+        <div class="col-md-9">
+            @RenderBody()
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}
