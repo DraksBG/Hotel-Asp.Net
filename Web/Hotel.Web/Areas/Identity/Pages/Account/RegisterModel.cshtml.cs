@@ -47,34 +47,34 @@ namespace Hotel.Web.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [StringLength(20, ErrorMessage = "Вашето {0} трябва да е поне {2} и най много {1} символа.", MinimumLength = 4)]
-            [Display(Name = "Име")]
+            [StringLength(20, ErrorMessage = "Your {0} should have minimum {2} and maximum {1} characters.", MinimumLength = 4)]
+            [Display(Name = "Name")]
             public string FirstName { get; set; }
 
             [Required]
-            [StringLength(20, ErrorMessage = "Вашата {0} трябва да е поне {2} и най много {1} символа.", MinimumLength = 4)]
-            [Display(Name = "Фамилия")]
+            [StringLength(20, ErrorMessage = "Your {0} should have minimum {2} and maximum {1} characters.", MinimumLength = 4)]
+            [Display(Name = "Surename")]
             public string LastName { get; set; }
 
             [Required]
-            [Display(Name = "Телефонен номер")]
-            [RegularExpression(@"08[789]\d{7}", ErrorMessage = "Грешен телефонен номер")]
+            [Display(Name = "Phonenumber")]
+            [RegularExpression(@"08[789]\d{7}", ErrorMessage = "Wrong phone number")]
             public string PhoneNumber { get; set; }
 
             [Required]
             [EmailAddress]
-            [Display(Name = "Имейл")]
+            [Display(Name = "Email")]
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "{0}та трябва да бъде поне {2} и не по-дълга от {1} символа", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "{0}should be at least {2} and no longer than {1} characters", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Парола")]
+            [Display(Name = "Password")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Повтори паролата")]
-            [Compare("Password", ErrorMessage = "Паролите не съвпадат.")]
+            [Display(Name = "Confirm password")]
+            [Compare("Password", ErrorMessage = "The passwords dosen't match")]
             public string ConfirmPassword { get; set; }
 
         }
@@ -110,7 +110,7 @@ namespace Hotel.Web.Areas.Identity.Pages.Account
                         await this.userManager.AddToRoleAsync(user, GlobalConstants.AdministratorRoleName);
                     }
 
-                    this.logger.LogInformation("Потребителят създаде нов акаунт.");
+                    this.logger.LogInformation("The user created new account.");
 
                     var code = await this.userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -123,7 +123,7 @@ namespace Hotel.Web.Areas.Identity.Pages.Account
                     await this.emailSender.SendEmailAsync(
                         this.Input.Email,
                         "Потвърдете имейла си",
-                        $"Моля, потвърдете акаунта си < a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>като натиснете тук</a>.");
+                        $"To confirm your account < a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>press here</a>.");
 
                     if (this.userManager.Options.SignIn.RequireConfirmedAccount)
                     {

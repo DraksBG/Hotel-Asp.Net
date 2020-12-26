@@ -84,7 +84,7 @@ namespace Hotel.Web.Areas.Identity.Pages.Account
                 var result = await this.signInManager.PasswordSignInAsync(this.Input.Email, this.Input.Password, this.Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    this.logger.LogInformation("Потребителят влезе в системата.");
+                    this.logger.LogInformation("The user logged in");
                     return this.LocalRedirect(returnUrl);
                 }
 
@@ -95,12 +95,12 @@ namespace Hotel.Web.Areas.Identity.Pages.Account
 
                 if (result.IsLockedOut)
                 {
-                    this.logger.LogWarning("Потребителският акаунт е заключен.");
+                    this.logger.LogWarning("The account was blocked.");
                     return this.RedirectToPage("./Lockout");
                 }
                 else
                 {
-                    this.ModelState.AddModelError(string.Empty, "Невалиден опит за влизане.");
+                    this.ModelState.AddModelError(string.Empty, "Wrong profile or password.");
                     return this.Page();
                 }
             }
