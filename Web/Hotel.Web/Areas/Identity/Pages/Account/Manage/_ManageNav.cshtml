@@ -2,6 +2,7 @@
 @using Hotel.Web.Areas.Identity.Pages.Account.Manage
 @using Hotel.Data.Models
 @using Hotel.Common
+@using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
