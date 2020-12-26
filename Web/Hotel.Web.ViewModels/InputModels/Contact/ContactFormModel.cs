@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Hotel.Common;
 
+namespace Hotel.Web.ViewModels.InputModels.Contact
 {
     public class ContactFormModel
     {
