@@ -1,4 +1,6 @@
-﻿namespace Hotel.Web
+﻿using Hotel.Services.Data.Restaurant;
+
+namespace Hotel.Web
 {
     using System.Reflection;
 
@@ -71,7 +73,8 @@
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IPictureService, PictureService>();
             services.AddTransient<IRoomsService, RoomsService>();
-            services.AddTransient<IConferenceHallService, ConferenceHallService>(); 
+            services.AddTransient<IConferenceHallService, ConferenceHallService>();
+            services.AddTransient<IRestaurantService, RestaurantsService>();
 
 
 
