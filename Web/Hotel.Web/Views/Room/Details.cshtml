@@ -55,45 +55,45 @@
             {
                 <h2>Apartment</h2>
             }
-        <ul class="social-network social-circle" style="list-style: none;">
+        <ul style="list-style: none;">
         
-            <li><a><i class="fa fa-bed"></i>@Model.NumberOfBeds beds</a></li>
+            <li><a><i class="fa fa-bed "></i>  @Model.NumberOfBeds beds</a></li>
             @if (Model.HasBathroom == true)
             {
-                <li><a><i class="fa fa-bathtub"></i>Bathroom</a></li>
+                <li><a><i class="fa fa-bathtub"></i>  Bathroom</a></li>
             }
             @if (Model.HasRoomService == true)
             {
-                <li><a><i class="fa fa-bell"></i>Room service 24/7</a></li>
+                <li><a><i class="fa fa-bell"></i>  Room service 24/7</a></li>
             }
             @if (Model.HasSeaView == true)
             {
-                <li><a><i class="fa fa-binoculars"></i>Sea view</a></li>
+                <li><a><i class="fa fa-binoculars"></i>  Sea view</a></li>
 
             }
             @if (Model.HasWifi == true)
             {
-                <li><a><i class="fa fa-wifi"></i>WiFi</a></li>
+                <li><a><i class="fa fa-wifi"></i>  WiFi</a></li>
 
             }
             @if (Model.HasTv )
             {
-                <li><a><i class="fa fa-tv"></i>Plasma TV</a></li>
+                <li><a><i class="fa fa-tv"></i>  Plasma TV</a></li>
 
             }
             @if (Model.HasPhone )
             {
-                <li><a><i class="fa fa-phone"></i>Phone</a></li>
+                <li><a><i class="fa fa-phone"></i>  Phone</a></li>
 
             }
             @if (Model.HasAirConditioner)
             {
-                <li><a><i class="fa fa-fa fa-snowflake-o"></i>Air conditioner</a></li>
+                <li><a><i class="fa fa-fa fa-snowflake-o"></i>  Air conditioner</a></li>
 
             }
             @if (Model.HasHeater )
             {
-                <li><a><i class="fa fa-thermometer-full"></i>Heater</a></li>
+                <li><a><i class="fa fa-thermometer-full"></i>  Heater</a></li>
 
             }
             <li><a class="btn btn-outline-dark" asp-area="" asp-controller="Room" asp-action="Reserve" asp-route-roomId="@Model.Id">Make your reservation now!</a></li>
@@ -102,6 +102,7 @@
             {
                 <li id="roomDetailsDeleteEditBtns">
                     <a class="btn btn-outline-warning" asp-area="" asp-controller="Room" asp-action="Edit" asp-route-roomId="@Model.Id">Edit</a>
+
                     <a class="btn btn-outline-danger" asp-area="" asp-controller="Room" asp-action="DeleteRoom" asp-route-roomId="@Model.Id">Delete</a>
                 </li>
             }
