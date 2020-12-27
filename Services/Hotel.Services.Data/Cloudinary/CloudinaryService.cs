@@ -9,13 +9,14 @@
 
     public class CloudinaryService : ICloudinaryService
     {
-        private readonly CloudinaryDotNet.Cloudinary cloudinary;
+        private readonly Cloudinary cloudinary;
 
-        public CloudinaryService(CloudinaryDotNet.Cloudinary cloudinary)
+        public CloudinaryService(Cloudinary cloudinary)
         {
             this.cloudinary = cloudinary;
         }
 
+        [System.Obsolete]
         public async Task<string> UploadPhotoAsync(IFormFile picture, string name, string folderName)
         {
             byte[] destinationData;

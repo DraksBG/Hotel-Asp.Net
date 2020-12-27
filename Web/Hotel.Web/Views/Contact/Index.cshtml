@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col-md-5">
                 <form method="post">
-                    @if (this.SignInManager.IsSignedIn(this.User))
+                    @if (SignInManager.IsSignedIn(User))
                     {
                         <div class="form-group">
                             <input asp-for="FirstName" class="form-control" placeholder="First name">
@@ -46,7 +46,7 @@
                         <span asp-validation-for="LastName" class="text-danger"></span>
 
                         <div class="form-group">
-                            <input asp-for="Email" value="@this.User.Identity.Name" class="form-control" placeholder="E-mail">
+                            <input asp-for="Email" value="@User.Identity.Name" class="form-control" placeholder="E-mail">
                         </div>
                         <span asp-validation-for="Email" class="text-danger"></span>
 

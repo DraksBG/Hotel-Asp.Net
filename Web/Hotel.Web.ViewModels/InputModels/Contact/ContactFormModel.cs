@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using Hotel.Common;
+    using Common;
 
     public class ContactFormModel
     {

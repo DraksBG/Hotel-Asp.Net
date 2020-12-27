@@ -2,10 +2,10 @@
 {
     using System.Threading.Tasks;
 
-    using Hotel.Common;
+    using Common;
     using Hotel.Services.Data.Room;
-    using Hotel.Web.ViewModels.InputModels.Room;
-    using Hotel.Web.ViewModels.RoomViewModels;
+    using ViewModels.InputModels.Room;
+    using ViewModels.RoomViewModels;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
@@ -22,37 +22,37 @@
         [Authorize]
         public IActionResult Create()
         {
-            return this.View();
+            return View();
         }
 
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> Create(CreateRoomInputModel input)
         {
-            if (!this.ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return this.View(input);
+                return View(input);
             }
 
-            await this.roomsService.CreateRoomAsync(input);
+            await roomsService.CreateRoomAsync(input);
 
-            this.TempData["InfoMessage"] = GlobalConstants.CreateRoomTempDataSuccess;
+            TempData["InfoMessage"] = GlobalConstants.CreateRoomTempDataSuccess;
 
-            return this.RedirectToAction("All");
+            return RedirectToAction("All");
         }
 
         [Authorize]
         public async Task<IActionResult> DeleteRoom(string roomId)
         {
-            var result = await this.roomsService.DeleteRoom(roomId);
+            var result = await roomsService.DeleteRoom(roomId);
 
             if (result == true)
             {
-                this.TempData["InfoMessage"] = GlobalConstants.DeleteRoomTempDataSuccess;
-                return this.RedirectToAction("All");
+                TempData["InfoMessage"] = GlobalConstants.DeleteRoomTempDataSuccess;
+                return RedirectToAction("All");
             }
 
-            return this.NotFound();
+            return NotFound();
         }
 
         [HttpGet]
@@ -60,9 +60,9 @@
         [Route("Room/Edit/{roomId}")]
         public async Task<IActionResult> Edit([FromRoute] string roomId)
         {
-            var result = await this.roomsService.GetRoomForEditAsync(roomId);
+            var result = await roomsService.GetRoomForEditAsync(roomId);
 
-            return this.View(result);
+            return View(result);
         }
 
         [HttpPost]
@@ -70,14 +70,14 @@
         [Route("Room/Edit/{roomId}")]
         public async Task<IActionResult> Edit([FromRoute] string roomId, EditRoomViewModel input)
         {
-            if (!this.ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return this.View(input);
+                return View(input);
             }
 
-            await this.roomsService.EditRoomAsync(roomId, input);
-            this.TempData["InfoMessage"] = GlobalConstants.EditRoomTempDataSuccess;
-            return this.RedirectToAction("All");
+            await roomsService.EditRoomAsync(roomId, input);
+            TempData["InfoMessage"] = GlobalConstants.EditRoomTempDataSuccess;
+            return RedirectToAction("All");
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Hotel.Data.Configurations
 {
-    using Hotel.Data.Models;
+    using Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

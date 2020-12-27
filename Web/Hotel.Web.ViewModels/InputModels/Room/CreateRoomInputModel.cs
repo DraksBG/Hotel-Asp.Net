@@ -3,8 +3,8 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    using Hotel.Common;
-    using Hotel.Data.Models.Enums;
+    using Common;
+    using Data.Models.Enums;
     using Microsoft.AspNetCore.Http;
 
     public class CreateRoomInputModel

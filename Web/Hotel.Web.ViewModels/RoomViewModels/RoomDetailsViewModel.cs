@@ -4,8 +4,8 @@
     using System.Linq;
 
     using AutoMapper;
-    using Hotel.Data.Models;
-    using Hotel.Services.Mapping;
+    using Data.Models;
+    using Services.Mapping;
 
     public class RoomDetailsViewModel : IMapFrom<Room>, IHaveCustomMappings
     {

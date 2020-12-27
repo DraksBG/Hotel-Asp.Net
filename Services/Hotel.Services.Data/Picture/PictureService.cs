@@ -3,7 +3,7 @@
     using System;
     using System.Threading.Tasks;
 
-    using Hotel.Common;
+    using Common;
     using Hotel.Data.Common.Repositories;
 
     public class PictureService : IPictureService
@@ -19,8 +19,8 @@
         {
             var picture = new Hotel.Data.Models.Picture() { Url = url };
 
-            await this.pictures.AddAsync(picture);
-            var result = await this.pictures.SaveChangesAsync();
+            await pictures.AddAsync(picture);
+            var result = await pictures.SaveChangesAsync();
 
             if (result < 0)
             {

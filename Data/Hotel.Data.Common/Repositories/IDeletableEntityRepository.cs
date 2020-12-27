@@ -2,7 +2,7 @@
 {
     using System.Linq;
 
-    using Hotel.Data.Common.Models;
+    using Models;
 
     public interface IDeletableEntityRepository<TEntity> : IRepository<TEntity>
         where TEntity : class, IDeletableEntity

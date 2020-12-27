@@ -2,8 +2,8 @@
 {
     using System.Threading.Tasks;
 
-    using Hotel.Common;
-    using Hotel.Web.ViewModels.InputModels.Contact;
+    using Common;
+    using ViewModels.InputModels.Contact;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using SendGrid;
@@ -20,18 +20,18 @@
 
         public IActionResult Index()
         {
-            return this.View();
+            return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Index(ContactFormModel model)
         {
-            if (!this.ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return this.View(model);
+                return View(model);
             }
 
-            var apiKey = this.configuration.GetValue<string>("SendGrid:ApiKey");
+            var apiKey = configuration.GetValue<string>("SendGrid:ApiKey");
 
             var client = new SendGridClient(apiKey);
             var name = model.FirstName + " " + model.LastName;
@@ -44,9 +44,9 @@
 
             await client.SendEmailAsync(msg);
 
-            this.TempData["InfoMessage"] = GlobalConstants.SuccessfullySentAnEmail;
+            TempData["InfoMessage"] = GlobalConstants.SuccessfullySentAnEmail;
 
-            return this.Redirect("/");
+            return Redirect("/");
         }
     }
 }

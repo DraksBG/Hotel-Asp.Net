@@ -3,7 +3,7 @@
     using System;
     using System.Threading.Tasks;
 
-    using Hotel.Data.Common;
+    using Common;
 
     using Microsoft.EntityFrameworkCore;
 
@@ -11,19 +11,19 @@
     {
         public DbQueryRunner(ApplicationDbContext context)
         {
-            this.Context = context ?? throw new ArgumentNullException(nameof(context));
+            Context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public ApplicationDbContext Context { get; set; }
 
         public Task RunQueryAsync(string query, params object[] parameters)
         {
-            return this.Context.Database.ExecuteSqlRawAsync(query, parameters);
+            return Context.Database.ExecuteSqlRawAsync(query, parameters);
         }
 
         public void Dispose()
         {
-            this.Dispose(true);
+            Dispose(true);
             GC.SuppressFinalize(this);
         }
 
@@ -31,7 +31,7 @@
         {
             if (disposing)
             {
-                this.Context?.Dispose();
+                Context?.Dispose();
             }
         }
     }

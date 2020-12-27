@@ -5,7 +5,7 @@
     using System.Threading.Tasks;
 
     using Hotel.Common;
-    using Hotel.Data.Models;
+    using Models;
 
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;

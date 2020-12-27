@@ -2,8 +2,8 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using Hotel.Common;
-    using Hotel.Data.Models.Enums;
+    using Common;
+    using Data.Models.Enums;
 
     public class EditRoomInputModel
     {

@@ -6,9 +6,9 @@
     using System.Linq;
 
     using AutoMapper;
-    using Hotel.Common;
-    using Hotel.Services.Mapping;
-    using Hotel.Web.Infrastructure;
+    using Common;
+    using Services.Mapping;
+    using Infrastructure;
 
     public class ReserveRoomInputModel : IHaveCustomMappings
     {

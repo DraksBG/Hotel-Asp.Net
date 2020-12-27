@@ -2,10 +2,10 @@
 {
     using System;
 
-    using Hotel.Data.Models;
-    using Hotel.Services.Mapping;
+    using Data.Models;
+    using Services.Mapping;
 
-    public class ConfHallAllViewModel : IMapFrom<ConferenceHallReservation>, IMapFrom<Data.Models.ConferenceHall>
+    public class ConfHallAllViewModel : IMapFrom<ConferenceHallReservation>, IMapFrom<ConferenceHall>
     {
         public string ConferenceHallId { get; set; }
 

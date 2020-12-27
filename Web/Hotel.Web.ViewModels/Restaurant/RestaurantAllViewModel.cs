@@ -4,8 +4,8 @@
     using System.Collections.Generic;
     using System.Text;
 
-    using Hotel.Data.Models;
-    using Hotel.Services.Mapping;
+    using Data.Models;
+    using Services.Mapping;
 
     public class RestaurantAllViewModel : IMapFrom<RestaurantReservation>
     {

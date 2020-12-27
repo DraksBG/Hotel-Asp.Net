@@ -30,14 +30,14 @@
         {
             entity.IsDeleted = false;
             entity.DeletedOn = null;
-            this.Update(entity);
+            Update(entity);
         }
 
         public override void Delete(TEntity entity)
         {
             entity.IsDeleted = true;
             entity.DeletedOn = DateTime.UtcNow;
-            this.Update(entity);
+            Update(entity);
         }
     }
 }

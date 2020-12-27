@@ -4,7 +4,7 @@
     using System.Threading.Tasks;
 
     using Hotel.Web.ViewModels.InputModels.Room;
-    using Hotel.Web.ViewModels.RoomViewModels;
+    using Web.ViewModels.RoomViewModels;
 
     public interface IRoomsService
     {

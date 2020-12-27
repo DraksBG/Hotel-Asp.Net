@@ -3,9 +3,9 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    using Hotel.Common;
-    using Hotel.Data.Models.Enums;
-    using Hotel.Web.Infrastructure;
+    using Common;
+    using Data.Models.Enums;
+    using Infrastructure;
 
     public class ConferenceHallInputModel
     {

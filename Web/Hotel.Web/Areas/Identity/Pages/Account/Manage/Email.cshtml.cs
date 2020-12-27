@@ -5,7 +5,7 @@
     using System.Text.Encodings.Web;
     using System.Threading.Tasks;
 
-    using Hotel.Data.Models;
+    using Data.Models;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.UI.Services;
     using Microsoft.AspNetCore.Mvc;

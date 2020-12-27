@@ -7,8 +7,8 @@
     using System.Text.Encodings.Web;
     using System.Threading.Tasks;
 
-    using Hotel.Common;
-    using Hotel.Data.Models;
+    using Common;
+    using Data.Models;
     using Microsoft.AspNetCore.Authentication;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
@@ -82,69 +82,69 @@
 
         public async Task OnGetAsync(string returnUrl = null)
         {
-            this.ReturnUrl = returnUrl;
-            this.ExternalLogins = (await this.signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            ReturnUrl = returnUrl;
+            ExternalLogins = (await signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            returnUrl ??= this.Url.Content("~/");
-            this.ExternalLogins = (await this.signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            if (this.ModelState.IsValid)
+            returnUrl ??= Url.Content("~/");
+            ExternalLogins = (await signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            if (ModelState.IsValid)
             {
                 var user = new ApplicationUser
                 {
-                    UserName = this.Input.Email,
-                    FirstName = this.Input.FirstName,
-                    LastName = this.Input.LastName,
-                    Email = this.Input.Email,
-                    PhoneNumber = this.Input.PhoneNumber,
+                    UserName = Input.Email,
+                    FirstName = Input.FirstName,
+                    LastName = Input.LastName,
+                    Email = Input.Email,
+                    PhoneNumber = Input.PhoneNumber,
                 };
 
-                var isRoot = !this.userManager.Users.Any();
+                var isRoot = !userManager.Users.Any();
 
-                var result = await this.userManager.CreateAsync(user, this.Input.Password);
+                var result = await userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
                     if (isRoot)
                     {
-                        await this.userManager.AddToRoleAsync(user, GlobalConstants.AdministratorRoleName);
+                        await userManager.AddToRoleAsync(user, GlobalConstants.AdministratorRoleName);
                     }
 
-                    this.logger.LogInformation("The user created new account.");
+                    logger.LogInformation("The user created new account.");
 
-                    var code = await this.userManager.GenerateEmailConfirmationTokenAsync(user);
+                    var code = await userManager.GenerateEmailConfirmationTokenAsync(user);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = this.Url.Page(
+                    var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
                         pageHandler: null,
                         values: new { area = "Identity", userId = user.Id, code = code },
-                        protocol: this.Request.Scheme);
+                        protocol: Request.Scheme);
 
-                    await this.emailSender.SendEmailAsync(
-                        this.Input.Email,
+                    await emailSender.SendEmailAsync(
+                        Input.Email,
                         "Потвърдете имейла си",
                         $"To confirm your account < a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>press here</a>.");
 
-                    if (this.userManager.Options.SignIn.RequireConfirmedAccount)
+                    if (userManager.Options.SignIn.RequireConfirmedAccount)
                     {
-                        return this.RedirectToPage("RegisterConfirmation", new { email = this.Input.Email });
+                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email });
                     }
                     else
                     {
-                        await this.signInManager.SignInAsync(user, isPersistent: false);
-                        return this.LocalRedirect(returnUrl);
+                        await signInManager.SignInAsync(user, isPersistent: false);
+                        return LocalRedirect(returnUrl);
                     }
                 }
 
                 foreach (var error in result.Errors)
                 {
-                    this.ModelState.AddModelError(string.Empty, error.Description);
+                    ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
 
             // If we got this far, something failed, redisplay form
-            return this.Page();
+            return Page();
         }
     }
 }

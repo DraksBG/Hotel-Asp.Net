@@ -6,7 +6,7 @@
     {
         public IActionResult Index()
         {
-            return this.View();
+            return View();
         }
     }
 }

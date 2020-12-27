@@ -6,13 +6,13 @@
     using System.Text;
 
     using Hotel.Data.Common.Models;
-    using Hotel.Data.Models.Enums;
+    using Enums;
 
    public class RestaurantReservation : BaseDeletableModel<string>
     {
         public RestaurantReservation()
         {
-            this.Id = Guid.NewGuid().ToString();
+            Id = Guid.NewGuid().ToString();
         }
 
         [Required]

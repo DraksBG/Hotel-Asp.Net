@@ -11,7 +11,7 @@
     {
         public ContactForm()
         {
-            this.Id = Guid.NewGuid().ToString();
+            Id = Guid.NewGuid().ToString();
         }
 
         [Required]

@@ -5,21 +5,21 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using Hotel.Common;
+    using Common;
     using Hotel.Data.Common.Repositories;
     using Hotel.Data.Models;
-    using Hotel.Services.Mapping;
+    using Mapping;
     using Hotel.Web.ViewModels.InputModels.ConferenceHall;
     using Microsoft.EntityFrameworkCore;
 
     public class ConferenceHallService : IConferenceHallService
     {
         private readonly IDeletableEntityRepository<ConferenceHallReservation> conferenceHallReservationRepository;
-        private readonly IDeletableEntityRepository<Hotel.Data.Models.ConferenceHall> conferenceHallRepository;
+        private readonly IDeletableEntityRepository<ConferenceHall> conferenceHallRepository;
 
         public ConferenceHallService(
             IDeletableEntityRepository<ConferenceHallReservation> conferenceHallReservationRepository,
-            IDeletableEntityRepository<Hotel.Data.Models.ConferenceHall> conferenceHallRepository)
+            IDeletableEntityRepository<ConferenceHall> conferenceHallRepository)
         {
             this.conferenceHallReservationRepository = conferenceHallReservationRepository;
             this.conferenceHallRepository = conferenceHallRepository;
@@ -27,7 +27,7 @@
 
         public async Task<int> GetAllHallsAsync<TViewModel>(ConferenceHallInputModel input)
         {
-            var conferenceHall = await this.conferenceHallRepository.All()
+            var conferenceHall = await conferenceHallRepository.All()
                 .Where(x => x.IsDeleted == false && x.EventType == input.EventType)
                 .FirstOrDefaultAsync();
 
@@ -36,24 +36,24 @@
 
         public async Task<IEnumerable<TViewModel>> GetAllReservationsAsync<TViewModel>(string userId)
         {
-            var result = await this.conferenceHallReservationRepository
+            var result = await conferenceHallReservationRepository
               .All()
               .Where(r => r.IsDeleted != true && r.UserId == userId)
               .To<TViewModel>()
               .ToListAsync();
 
-            var eventDate = await this.conferenceHallReservationRepository
+            var eventDate = await conferenceHallReservationRepository
                 .All()
                 .Where(x => x.EventDate < DateTime.Now && x.CheckOut < DateTime.Now)
                 .ToListAsync();
 
-            var conferenceHalls = await this.conferenceHallRepository.All().Where(x => x.IsDeleted == false).ToListAsync();
+            var conferenceHalls = await conferenceHallRepository.All().Where(x => x.IsDeleted == false).ToListAsync();
 
             if (eventDate != null && eventDate.Count > 0)
             {
                 foreach (var item in eventDate)
                 {
-                    this.conferenceHallReservationRepository.Delete(item);
+                    conferenceHallReservationRepository.Delete(item);
 
                     foreach (var hall in conferenceHalls.Where(x => x.CurrentCapacity != x.MaxCapacity))
                     {
@@ -62,8 +62,8 @@
                 }
             }
 
-            await this.conferenceHallRepository.SaveChangesAsync();
-            await this.conferenceHallReservationRepository.SaveChangesAsync();
+            await conferenceHallRepository.SaveChangesAsync();
+            await conferenceHallReservationRepository.SaveChangesAsync();
 
             if (result != null)
             {
@@ -75,24 +75,24 @@
 
         public async Task<IEnumerable<TViewModel>> GetAllReservationsAsyncForAdmin<TViewModel>()
         {
-            var result = await this.conferenceHallReservationRepository
+            var result = await conferenceHallReservationRepository
               .All()
               .Where(r => r.IsDeleted != true)
               .To<TViewModel>()
               .ToListAsync();
 
-            var eventDate = await this.conferenceHallReservationRepository
+            var eventDate = await conferenceHallReservationRepository
                 .All()
                 .Where(x => x.EventDate < DateTime.Now && x.CheckOut < DateTime.Now)
                 .ToListAsync();
 
-            var conferenceHalls = await this.conferenceHallRepository.All().Where(x => x.IsDeleted == false).ToListAsync();
+            var conferenceHalls = await conferenceHallRepository.All().Where(x => x.IsDeleted == false).ToListAsync();
 
             if (eventDate != null && eventDate.Count > 0)
             {
                 foreach (var item in eventDate)
                 {
-                    this.conferenceHallReservationRepository.Delete(item);
+                    conferenceHallReservationRepository.Delete(item);
 
                     foreach (var hall in conferenceHalls.Where(x => x.CurrentCapacity != x.MaxCapacity))
                     {
@@ -101,8 +101,8 @@
                 }
             }
 
-            await this.conferenceHallRepository.SaveChangesAsync();
-            await this.conferenceHallReservationRepository.SaveChangesAsync();
+            await conferenceHallRepository.SaveChangesAsync();
+            await conferenceHallReservationRepository.SaveChangesAsync();
 
             if (result != null)
             {
@@ -114,7 +114,7 @@
 
         public async Task<bool> ReserveConferenceHall(ConferenceHallInputModel input)
         {
-            var conferenceHall = this.conferenceHallRepository.All()
+            var conferenceHall = conferenceHallRepository.All()
                 .Where(x => x.IsDeleted == false && x.EventType == input.EventType)
                 .FirstOrDefault();
 
@@ -142,12 +142,12 @@
 
                 conferenceHallReservation.TotalPrice = price;
 
-                var allReservationsForDateForHall = this.conferenceHallReservationRepository
+                var allReservationsForDateForHall = conferenceHallReservationRepository
                     .All()
                     .Where(x => x.EventDate == input.EventDate && x.EventType == input.EventType);
 
-                var allReservations = this.conferenceHallReservationRepository.All().Select(x => x.EventDate).ToList();
-                var allReservationsForType = this.conferenceHallReservationRepository
+                var allReservations = conferenceHallReservationRepository.All().Select(x => x.EventDate).ToList();
+                var allReservationsForType = conferenceHallReservationRepository
                     .All().Where(x => x.EventType == input.EventType).ToList();
 
                 if (allReservationsForDateForHall.Count() != 0)
@@ -171,9 +171,9 @@
                     conferenceHall.CurrentCapacity -= input.NumberOfGuests;
                 }
 
-                await this.conferenceHallReservationRepository.AddAsync(conferenceHallReservation);
+                await conferenceHallReservationRepository.AddAsync(conferenceHallReservation);
 
-                await this.conferenceHallReservationRepository.SaveChangesAsync();
+                await conferenceHallReservationRepository.SaveChangesAsync();
 
                 return true;
             }

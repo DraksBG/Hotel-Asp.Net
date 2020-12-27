@@ -26,6 +26,8 @@
         public const string SuccessfullySentAnEmail = "You have successfully sent an email! Please check your mailbox for a reply!";
         public const string FreeSeatsForHallError = "The available seats for this date is ";
         public const string ReserveConferenceHallTempDataSuccess = "You successfully booked a conference hall!";
+        public const string FreeSeatsForRestaurantError = "The available seats for this date is ";
+        public const string ReserveRestaurantTempDataSuccess = "You successfully booked a restaurant!";
 
 
 

@@ -4,13 +4,13 @@
     using System.ComponentModel.DataAnnotations;
 
     using Hotel.Data.Common.Models;
-    using Hotel.Data.Models.Enums;
+    using Enums;
 
     public class RoomReservation : BaseDeletableModel<string>
     {
         public RoomReservation()
         {
-            this.Id = Guid.NewGuid().ToString();
+            Id = Guid.NewGuid().ToString();
         }
 
         [Required]

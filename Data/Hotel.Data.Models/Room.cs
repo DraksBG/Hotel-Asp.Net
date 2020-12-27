@@ -6,15 +6,15 @@
     using System.Text;
 
     using Hotel.Data.Common.Models;
-    using Hotel.Data.Models.Enums;
+    using Enums;
     using Microsoft.EntityFrameworkCore.Diagnostics;
 
     public class Room:BaseDeletableModel<string>
     {
         public Room()
         {
-            this.Id = Guid.NewGuid().ToString();
-            this.Pictures = new HashSet<Picture>();
+            Id = Guid.NewGuid().ToString();
+            Pictures = new HashSet<Picture>();
         }
 
         [Required]

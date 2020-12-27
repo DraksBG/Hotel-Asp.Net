@@ -13,7 +13,7 @@
 
 @if (Model.AllReservations == null || !Model.AllReservations.Any())
 {
-    @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+    @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
     {
         <div class="col-lg-12 text-center">
             <h2>There is no active events at the moment</h2>
@@ -30,7 +30,7 @@
 }
 else
 {
-    @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+    @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
     {
         <div class="col-lg-12 text-center">
             <h2>Reservations for halls <a class="btn btn-outline-warning" href="/Identity/Account/Manage/_ManageNav">Go back</a></h2>

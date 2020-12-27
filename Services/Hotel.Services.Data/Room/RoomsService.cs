@@ -5,25 +5,25 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using Hotel.Common;
+    using Common;
     using Hotel.Data.Common.Repositories;
     using Hotel.Data.Models;
-    using Hotel.Services.Data.Cloudinary;
-    using Hotel.Services.Data.Picture;
-    using Hotel.Services.Mapping;
+    using Cloudinary;
+    using Picture;
+    using Mapping;
     using Hotel.Web.ViewModels.InputModels.Room;
-    using Hotel.Web.ViewModels.RoomViewModels;
+    using Web.ViewModels.RoomViewModels;
     using Microsoft.EntityFrameworkCore;
 
     public class RoomsService : IRoomsService
     {
         private readonly IPictureService pictureService;
-        private readonly IDeletableEntityRepository<Hotel.Data.Models.Room> repository;
+        private readonly IDeletableEntityRepository<Room> repository;
         private readonly IDeletableEntityRepository<RoomReservation> roomReservationRepository;
         private readonly ICloudinaryService cloudinaryService;
 
         public RoomsService(
-            IDeletableEntityRepository<Hotel.Data.Models.Room> repository,
+            IDeletableEntityRepository<Room> repository,
             IDeletableEntityRepository<RoomReservation> roomReservationRepository,
             IPictureService pictureService,
             ICloudinaryService cloudinaryService)
@@ -40,13 +40,13 @@
 
             var pictureUrls = input.Pictures
                 .Select(async x =>
-                    await this.cloudinaryService.UploadPhotoAsync(x, x.FileName, folderName))
+                    await cloudinaryService.UploadPhotoAsync(x, x.FileName, folderName))
                 .Select(
                     x => 
                     x.Result)
                 .ToList();
 
-            var room = new Hotel.Data.Models.Room
+            var room = new Room
             {
                 RoomType = input.RoomType,
                 Price = input.Price,
@@ -60,14 +60,14 @@
                 HasPhone = input.HasPhone,
                 HasAirConditioner = input.HasAirConditioner,
                 HasHeater = input.HasHeater,
-                Pictures = pictureUrls.Select(x => new Hotel.Data.Models.Picture { Url = x })
+                Pictures = pictureUrls.Select(x => new Picture { Url = x })
                 .ToList(),
             };
 
             if (room != null && room.Price > 0)
             {
-                await this.repository.AddAsync(room);
-                var result = await this.repository.SaveChangesAsync();
+                await repository.AddAsync(room);
+                var result = await repository.SaveChangesAsync();
 
                 return true;
             }
@@ -77,16 +77,16 @@
 
         public async Task<bool> DeleteRoom(string id)
         {
-            var room = this.repository
+            var room = repository
                 .All()
                 .FirstOrDefault(r => r.Id == id);
 
             if (room != null)
             {
-                this.repository
+                repository
                     .Delete(room);
 
-                int result = await this.repository.SaveChangesAsync();
+                int result = await repository.SaveChangesAsync();
                 return result > 0;
             }
 
@@ -95,7 +95,7 @@
 
         public async Task<bool> EditRoomAsync(string id, EditRoomViewModel input)
         {
-            var currentRoom = this.GetRoomById(id);
+            var currentRoom = GetRoomById(id);
 
             if (currentRoom != null)
             {
@@ -112,9 +112,9 @@
                 currentRoom.HasSeaView = input.HasSeaView;
                 currentRoom.HasTv = input.HasTv;
 
-                this.repository.Update(currentRoom);
+                repository.Update(currentRoom);
 
-                await this.repository.SaveChangesAsync();
+                await repository.SaveChangesAsync();
 
                 return true;
             }
@@ -124,7 +124,7 @@
 
         public async Task<IEnumerable<TViewModel>> GetAllReservationsAsync<TViewModel>(string userId)
         {
-            var reservations = await this.roomReservationRepository
+            var reservations = await roomReservationRepository
             .All()
             .Where(r => r.IsDeleted == false
             && r.UserId == userId
@@ -132,15 +132,15 @@
             .To<TViewModel>()
             .ToListAsync();
 
-            var reservationCheckOut = await this.roomReservationRepository.All().Where(x => x.CheckOut < DateTime.Now).ToListAsync();
+            var reservationCheckOut = await roomReservationRepository.All().Where(x => x.CheckOut < DateTime.Now).ToListAsync();
 
             if (reservationCheckOut.Any())
             {
                 foreach (var res in reservationCheckOut)
                 {
-                    this.roomReservationRepository.Delete(res);
+                    roomReservationRepository.Delete(res);
 
-                    await this.roomReservationRepository.SaveChangesAsync();
+                    await roomReservationRepository.SaveChangesAsync();
                 }
             }
 
@@ -154,21 +154,21 @@
 
         public async Task<IEnumerable<TViewModel>> GetAllReservationsAsyncForAdmin<TViewModel>()
         {
-            var reservations = await this.roomReservationRepository
+            var reservations = await roomReservationRepository
             .All()
             .Where(r => r.IsDeleted == false && r.CheckOut > DateTime.Now) // UtcNow
             .To<TViewModel>()
             .ToListAsync();
 
-            var reservationCheckOut = await this.roomReservationRepository.All().Where(x => x.CheckOut < DateTime.Now).ToListAsync();
+            var reservationCheckOut = await roomReservationRepository.All().Where(x => x.CheckOut < DateTime.Now).ToListAsync();
 
             if (reservationCheckOut.Any())
             {
                 foreach (var res in reservationCheckOut)
                 {
-                    this.roomReservationRepository.Delete(res);
+                    roomReservationRepository.Delete(res);
 
-                    await this.roomReservationRepository.SaveChangesAsync();
+                    await roomReservationRepository.SaveChangesAsync();
                 }
             }
 
@@ -181,7 +181,7 @@
         }
 
         public async Task<IEnumerable<TViewModel>> GetAllRoomsAsync<TViewModel>()
-            => await this.repository
+            => await repository
             .All()
             .Where(r => r.IsDeleted != true)
             .OrderBy(p => p.Price)
@@ -189,7 +189,7 @@
             .ToListAsync();
 
         public async Task<TViewModel> GetRoomAsync<TViewModel>(string id)
-            => await this.repository
+            => await repository
             .All()
             .Where(r => r.Id == id && r.IsDeleted != true)
             .To<TViewModel>()
@@ -197,7 +197,7 @@
 
         public async Task<EditRoomViewModel> GetRoomForEditAsync(string id)
         {
-            var room = this.GetRoomById(id);
+            var room = GetRoomById(id);
 
             if (room != null)
             {
@@ -225,7 +225,7 @@
 
         public async Task<bool> ReserveRoom(ReserveRoomInputModel input)
         {
-            var room = this.repository.All()
+            var room = repository.All()
                 .FirstOrDefault(r => r.Id == input.RoomId);
 
             if (room != null && input.CountOfPeople <= room.NumberOfBeds)
@@ -251,9 +251,9 @@
 
                 reservation.TotalPrice = totalPrice;
 
-                await this.roomReservationRepository.AddAsync(reservation);
+                await roomReservationRepository.AddAsync(reservation);
 
-                int result = await this.roomReservationRepository.SaveChangesAsync();
+                int result = await roomReservationRepository.SaveChangesAsync();
 
                 if (reservation.NumberOfNights <= 0)
                 {
@@ -266,7 +266,7 @@
             throw new InvalidOperationException(GlobalConstants.InvalidOperationExceptionForRoomReservation);
         }
 
-        public Hotel.Data.Models.Room GetRoomById(string id)
-            => this.repository.All()?.FirstOrDefault(x => x.Id == id);
+        public Room GetRoomById(string id)
+            => repository.All()?.FirstOrDefault(x => x.Id == id);
     }
 }

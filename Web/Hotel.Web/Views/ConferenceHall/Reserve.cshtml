@@ -32,7 +32,7 @@
 
                     <div class="form-group">
                         <i class="fa fa-envelope icon"></i>
-                        <input class="form-control" asp-for="EmailAddress" value="@this.User.Identity.Name" placeholder="E-mail">
+                        <input class="form-control" asp-for="EmailAddress" value="@User.Identity.Name" placeholder="E-mail">
                     </div>
                     <span asp-validation-for="EmailAddress" class="text-danger"></span>
 

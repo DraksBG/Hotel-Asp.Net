@@ -20,14 +20,14 @@
 
         public async Task<string> GetUserIdAsync(ClaimsPrincipal claims)
         {
-            ApplicationUser uID = await this.userManager.GetUserAsync(claims);
+            ApplicationUser uID = await userManager.GetUserAsync(claims);
 
             return uID.Id;
         }
 
         public async Task<string> GetUserPhoneNumberAsync(ClaimsPrincipal claims)
         {
-            ApplicationUser uID = await this.userManager.GetUserAsync(claims);
+            ApplicationUser uID = await userManager.GetUserAsync(claims);
 
             return uID.PhoneNumber;
         }

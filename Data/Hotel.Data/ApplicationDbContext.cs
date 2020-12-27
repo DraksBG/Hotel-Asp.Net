@@ -7,7 +7,7 @@
     using System.Threading.Tasks;
 
     using Hotel.Data.Common.Models;
-    using Hotel.Data.Models;
+    using Models;
 
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
@@ -38,22 +38,22 @@
 
         public DbSet<RestaurantReservation> RestaurantReservations { get; set; }
 
-        public override int SaveChanges() => this.SaveChanges(true);
+        public override int SaveChanges() => SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
-            this.ApplyAuditInfoRules();
+            ApplyAuditInfoRules();
             return base.SaveChanges(acceptAllChangesOnSuccess);
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) =>
-            this.SaveChangesAsync(true, cancellationToken);
+            SaveChangesAsync(true, cancellationToken);
 
         public override Task<int> SaveChangesAsync(
             bool acceptAllChangesOnSuccess,
             CancellationToken cancellationToken = default)
         {
-            this.ApplyAuditInfoRules();
+            ApplyAuditInfoRules();
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
 
@@ -62,7 +62,7 @@
             // Needed for Identity models configuration
             base.OnModelCreating(builder);
 
-            this.ConfigureUserIdentityRelations(builder);
+            ConfigureUserIdentityRelations(builder);
 
             EntityIndexesConfiguration.Configure(builder);
 
@@ -94,11 +94,11 @@
 
         // Applies configurations
         private void ConfigureUserIdentityRelations(ModelBuilder builder)
-             => builder.ApplyConfigurationsFromAssembly(this.GetType().Assembly);
+             => builder.ApplyConfigurationsFromAssembly(GetType().Assembly);
 
         private void ApplyAuditInfoRules()
         {
-            var changedEntries = this.ChangeTracker
+            var changedEntries = ChangeTracker
                 .Entries()
                 .Where(e =>
                     e.Entity is IAuditInfo &&

@@ -19,7 +19,7 @@
         @foreach (var item in Model.AllRooms)
         {
 
-            @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+            @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
             {
                 <div id="singleRoom" class="container">
                     <div class="row">
@@ -114,7 +114,7 @@
                 </div>
             }
         }
-        @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+        @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
         {
             <div class="row">
                 <div class="col-lg-12">

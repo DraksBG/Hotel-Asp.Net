@@ -3,10 +3,10 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    using Hotel.Common;
-    using Hotel.Data.Models.Enums;
-    using Hotel.Services.Mapping;
-    using Hotel.Web.Infrastructure;
+    using Common;
+    using Data.Models.Enums;
+    using Services.Mapping;
+    using Infrastructure;
 
     public class RestaurantInputModel : IMapFrom<Hotel.Data.Models.Restaurant>
     {

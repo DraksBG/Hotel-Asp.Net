@@ -5,20 +5,20 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using Hotel.Common;
+    using Common;
     using Hotel.Data.Common.Repositories;
     using Hotel.Data.Models;
-    using Hotel.Services.Mapping;
+    using Mapping;
     using Hotel.Web.ViewModels.InputModels.Restaurant;
     using Microsoft.EntityFrameworkCore;
 
     public class RestaurantsService : IRestaurantService
     {
-        private readonly IDeletableEntityRepository<Hotel.Data.Models.Restaurant> restaurantRepository;
+        private readonly IDeletableEntityRepository<Restaurant> restaurantRepository;
         private readonly IDeletableEntityRepository<RestaurantReservation> restaurantReservationRepository;
 
         public RestaurantsService(
-            IDeletableEntityRepository<Hotel.Data.Models.Restaurant> restaurantRepository,
+            IDeletableEntityRepository<Restaurant> restaurantRepository,
             IDeletableEntityRepository<RestaurantReservation> restaurantReservationRepository)
         {
             this.restaurantRepository = restaurantRepository;
@@ -27,24 +27,24 @@
 
         public async Task<IEnumerable<TViewModel>> GetAllReservationsAsync<TViewModel>(string userId)
         {
-            var result = await this.restaurantReservationRepository
+            var result = await restaurantReservationRepository
               .All()
               .Where(r => r.IsDeleted != true && r.UserId == userId)
               .To<TViewModel>()
               .ToListAsync();
 
-            var datesBeforeToday = await this.restaurantReservationRepository
+            var datesBeforeToday = await restaurantReservationRepository
                 .All()
                 .Where(x => x.EventDate < DateTime.Now && x.CheckOut < DateTime.Now)
                 .ToListAsync();
 
-            var restaurants = await this.restaurantRepository.All().Where(x => x.IsDeleted == false).ToListAsync();
+            var restaurants = await restaurantRepository.All().Where(x => x.IsDeleted == false).ToListAsync();
 
             if (datesBeforeToday != null && datesBeforeToday.Count > 0)
             {
                 foreach (var item in datesBeforeToday)
                 {
-                    this.restaurantReservationRepository.Delete(item);
+                    restaurantReservationRepository.Delete(item);
 
                     foreach (var rest in restaurants.Where(x => x.CurrentCapacity != x.MaxCapacity))
                     {
@@ -53,8 +53,8 @@
                 }
             }
 
-            await this.restaurantRepository.SaveChangesAsync();
-            await this.restaurantReservationRepository.SaveChangesAsync();
+            await restaurantRepository.SaveChangesAsync();
+            await restaurantReservationRepository.SaveChangesAsync();
 
             if (result != null)
             {
@@ -66,24 +66,24 @@
 
         public async Task<IEnumerable<TViewModel>> GetAllReservationsAsyncForAdmin<TViewModel>()
         {
-            var result = await this.restaurantReservationRepository
+            var result = await restaurantReservationRepository
               .All()
               .Where(r => r.IsDeleted != true)
               .To<TViewModel>()
               .ToListAsync();
 
-            var datesBeforeToday = await this.restaurantReservationRepository
+            var datesBeforeToday = await restaurantReservationRepository
                 .All()
                 .Where(x => x.EventDate < DateTime.Now && x.CheckOut < DateTime.Now)
                 .ToListAsync();
 
-            var restaurants = await this.restaurantRepository.All().Where(x => x.IsDeleted == false).ToListAsync();
+            var restaurants = await restaurantRepository.All().Where(x => x.IsDeleted == false).ToListAsync();
 
             if (datesBeforeToday != null && datesBeforeToday.Count > 0)
             {
                 foreach (var item in datesBeforeToday)
                 {
-                    this.restaurantReservationRepository.Delete(item);
+                    restaurantReservationRepository.Delete(item);
 
                     foreach (var rest in restaurants.Where(x => x.CurrentCapacity != x.MaxCapacity))
                     {
@@ -92,8 +92,8 @@
                 }
             }
 
-            await this.restaurantRepository.SaveChangesAsync();
-            await this.restaurantReservationRepository.SaveChangesAsync();
+            await restaurantRepository.SaveChangesAsync();
+            await restaurantReservationRepository.SaveChangesAsync();
 
             if (result != null)
             {
@@ -105,7 +105,7 @@
 
         public async Task<bool> ReserveRestaurant(RestaurantInputModel input)
         {
-            var restaurant = this.restaurantRepository.All().FirstOrDefault(x => x.IsDeleted == false);
+            var restaurant = restaurantRepository.All().FirstOrDefault(x => x.IsDeleted == false);
 
             if (restaurant != null && input.NumberOfGuests <= restaurant.MaxCapacity && input.EventDate.Day >= DateTime.Now.Day)
             {
@@ -129,9 +129,9 @@
 
                 restaurantReservation.TotalPrice = price;
 
-                var allReservationsForDate = this.restaurantReservationRepository.All().Where(x => x.EventDate == input.EventDate);
+                var allReservationsForDate = restaurantReservationRepository.All().Where(x => x.EventDate == input.EventDate);
 
-                var allReservations = this.restaurantReservationRepository.All().Select(x => x.EventDate).ToList();
+                var allReservations = restaurantReservationRepository.All().Select(x => x.EventDate).ToList();
 
                 if (allReservationsForDate.Count() != 0)
                 {
@@ -154,9 +154,9 @@
                     restaurant.CurrentCapacity -= input.NumberOfGuests;
                 }
 
-                await this.restaurantReservationRepository.AddAsync(restaurantReservation);
+                await restaurantReservationRepository.AddAsync(restaurantReservation);
 
-                await this.restaurantReservationRepository.SaveChangesAsync();
+                await restaurantReservationRepository.SaveChangesAsync();
 
                 return true;
             }
@@ -165,6 +165,6 @@
         }
 
         public int GetRemainingCapacity()
-        => this.restaurantRepository.All().First().CurrentCapacity;
+        => restaurantRepository.All().First().CurrentCapacity;
     }
 }

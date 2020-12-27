@@ -3,13 +3,13 @@
     using System;
     using System.Threading.Tasks;
 
-    using Hotel.Common;
+    using Common;
     using Hotel.Data.Common.Repositories;
-    using Hotel.Data.Models;
+    using Data.Models;
     using Hotel.Services.Data.Restaurant;
     using Hotel.Services.Data.User;
-    using Hotel.Web.ViewModels.InputModels.Restaurant;
-    using Hotel.Web.ViewModels.Restaurant;
+    using ViewModels.InputModels.Restaurant;
+    using ViewModels.Restaurant;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +18,6 @@
         private readonly IUsersService usersService;
         private readonly IRestaurantService restaurantService;
         
-
         public RestaurantController(
             IUsersService usersService,
             IRestaurantService restaurantService,
@@ -30,7 +29,7 @@
 
         public IActionResult Index()
         {
-            return this.View();
+            return View();
         }
 
         [Authorize]
@@ -39,46 +38,46 @@
         {
             var inputModel = new RestaurantInputModel
             {
-                PhoneNumber = await this.usersService.GetUserPhoneNumberAsync(this.User),
+                PhoneNumber = await usersService.GetUserPhoneNumberAsync(User),
                 EventDate = DateTime.Now,
             };
 
-            return this.View(inputModel);
+            return View(inputModel);
         }
 
         [HttpPost]
         public async Task<IActionResult> Reserve(RestaurantInputModel input)
         {
-            var remainingCapacity = this.restaurantService.GetRemainingCapacity();
+            var remainingCapacity = restaurantService.GetRemainingCapacity();
 
-            if (!this.ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return this.View(input);
+                return View(input);
             }
 
-            var userId = await this.usersService.GetUserIdAsync(this.User);
+            var userId = await usersService.GetUserIdAsync(User);
 
             input.UserId = userId;
 
-            var result = await this.restaurantService.ReserveRestaurant(input);
+            var result = await restaurantService.ReserveRestaurant(input);
 
             if (result == false)
             {
-                this.ModelState.AddModelError("EventDate", GlobalConstants.FreeSeatsForRestaurantError + remainingCapacity);
-                return this.View(input);
+                ModelState.AddModelError("EventDate", GlobalConstants.FreeSeatsForRestaurantError + remainingCapacity);
+                return View(input);
             }
 
-            this.TempData["InfoMessage"] = GlobalConstants.ReserveRestaurantTempDataSuccess;
+            TempData["InfoMessage"] = GlobalConstants.ReserveRestaurantTempDataSuccess;
 
-            return this.Redirect("/Restaurant/Reservations");
+            return Redirect("/Restaurant/Reservations");
         }
 
         [HttpGet]
         public async Task<IActionResult> Reservations()
         {
-            var userId = await this.usersService.GetUserIdAsync(this.User);
+            var userId = await usersService.GetUserIdAsync(User);
 
-            var reservations = await this.restaurantService
+            var reservations = await restaurantService
                 .GetAllReservationsAsync<RestaurantAllViewModel>(userId);
 
             var reservationView = new RestaurantViewModel()
@@ -86,7 +85,7 @@
                 AllReservations = reservations,
             };
 
-            return this.View(reservationView);
+            return View(reservationView);
         }
     }
 }

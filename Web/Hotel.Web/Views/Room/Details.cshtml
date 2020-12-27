@@ -98,7 +98,7 @@
             }
             <li><a class="btn btn-outline-dark" asp-area="" asp-controller="Room" asp-action="Reserve" asp-route-roomId="@Model.Id">Make your reservation now!</a></li>
 
-            @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+            @if (User.IsInRole(GlobalConstants.AdministratorRoleName))
             {
                 <li id="roomDetailsDeleteEditBtns">
                     <a class="btn btn-outline-warning" asp-area="" asp-controller="Room" asp-action="Edit" asp-route-roomId="@Model.Id">Edit</a>

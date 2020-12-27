@@ -3,20 +3,20 @@
     using System.Reflection;
 
     using CloudinaryDotNet;
-    using Hotel.Data;
+    using Data;
     using Hotel.Data.Common;
     using Hotel.Data.Common.Repositories;
-    using Hotel.Data.Models;
-    using Hotel.Data.Repositories;
-    using Hotel.Data.Seeding;
+    using Data.Models;
+    using Data.Repositories;
+    using Data.Seeding;
     using Hotel.Services.Data.Cloudinary;
     using Hotel.Services.Data.ConferenceHall;
     using Hotel.Services.Data.Picture;
     using Hotel.Services.Data.Room;
     using Hotel.Services.Data.User;
-    using Hotel.Services.Mapping;
-    using Hotel.Services.Messaging;
-    using Hotel.Web.ViewModels;
+    using Services.Mapping;
+    using Services.Messaging;
+    using ViewModels;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;
@@ -39,7 +39,7 @@
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ApplicationDbContext>(
-                options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
+                options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
                 .AddRoles<ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>();
@@ -59,7 +59,7 @@
             services.AddRazorPages();
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddSingleton(this.configuration);
+            services.AddSingleton(configuration);
 
             // Data repositories
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
@@ -78,9 +78,9 @@
             services.AddTransient<ICloudinaryService, CloudinaryService>();
 
             Account cloudinaryCredentials = new Account(
-                this.configuration["Cloudinary:CloudName"],
-                this.configuration["Cloudinary:ApiKey"],
-                this.configuration["Cloudinary:ApiSecret"]);
+                configuration["Cloudinary:CloudName"],
+                configuration["Cloudinary:ApiKey"],
+                configuration["Cloudinary:ApiSecret"]);
 
             Cloudinary cloudinaryUtility = new Cloudinary(cloudinaryCredentials);
 

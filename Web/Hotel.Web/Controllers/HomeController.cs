@@ -2,7 +2,7 @@
 {
     using System.Diagnostics;
 
-    using Hotel.Web.ViewModels;
+    using ViewModels;
 
     using Microsoft.AspNetCore.Mvc;
 
@@ -10,19 +10,19 @@
     {
         public IActionResult Index()
         {
-            return this.View();
+            return View();
         }
 
         public IActionResult Privacy()
         {
-            return this.View();
+            return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return this.View(
-                new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });
+            return View(
+                new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

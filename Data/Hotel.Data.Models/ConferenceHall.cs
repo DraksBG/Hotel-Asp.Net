@@ -5,15 +5,15 @@
     using System.ComponentModel.DataAnnotations;
 
     using Hotel.Data.Common.Models;
-    using Hotel.Data.Models.Enums;
+    using Enums;
 
     public class ConferenceHall : BaseDeletableModel<string>
     {
         public ConferenceHall()
         {
-            this.Id = Guid.NewGuid().ToString();
-            this.Pictures = new List<Picture>();
-            this.ConferenceHallReservations = new HashSet<ConferenceHallReservation>();
+            Id = Guid.NewGuid().ToString();
+            Pictures = new List<Picture>();
+            ConferenceHallReservations = new HashSet<ConferenceHallReservation>();
         }
 
         [Required]

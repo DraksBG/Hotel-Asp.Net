@@ -3,11 +3,11 @@
     using System;
     using System.Threading.Tasks;
 
-    using Hotel.Common;
+    using Common;
     using Hotel.Services.Data.ConferenceHall;
     using Hotel.Services.Data.User;
-    using Hotel.Web.ViewModels.ConferenceHall;
-    using Hotel.Web.ViewModels.InputModels.ConferenceHall;
+    using ViewModels.ConferenceHall;
+    using ViewModels.InputModels.ConferenceHall;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
@@ -24,7 +24,7 @@
 
         public IActionResult Index()
         {
-            return this.View();
+            return View();
         }
 
         [Authorize]
@@ -33,47 +33,47 @@
         {
             var inputModel = new ConferenceHallInputModel
             {
-                PhoneNumber = await this.usersService.GetUserPhoneNumberAsync(this.User),
+                PhoneNumber = await usersService.GetUserPhoneNumberAsync(User),
                 EventDate = DateTime.Now,
             };
 
-            return this.View(inputModel);
+            return View(inputModel);
         }
 
         [HttpPost]
         public async Task<IActionResult> Reserve(ConferenceHallInputModel input)
         {
-            if (!this.ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                return this.View(input);
+                return View(input);
             }
 
-            var userId = await this.usersService.GetUserIdAsync(this.User);
+            var userId = await usersService.GetUserIdAsync(User);
 
             input.UserId = userId;
 
-            var result = await this.conferenceHallService.ReserveConferenceHall(input);
+            var result = await conferenceHallService.ReserveConferenceHall(input);
 
-            var capacity = await this.conferenceHallService
+            var capacity = await conferenceHallService
                 .GetAllHallsAsync<ConfHallAllViewModel>(input);
 
             if (result == false)
             {
-                this.ModelState.AddModelError("EventDate", GlobalConstants.FreeSeatsForHallError + capacity);
-                return this.View(input);
+                ModelState.AddModelError("EventDate", GlobalConstants.FreeSeatsForHallError + capacity);
+                return View(input);
             }
 
-            this.TempData["InfoMessage"] = GlobalConstants.ReserveConferenceHallTempDataSuccess;
+            TempData["InfoMessage"] = GlobalConstants.ReserveConferenceHallTempDataSuccess;
 
-            return this.Redirect("/ConferenceHall/Reservations");
+            return Redirect("/ConferenceHall/Reservations");
         }
 
         [HttpGet]
         public async Task<IActionResult> Reservations()
         {
-            var userId = await this.usersService.GetUserIdAsync(this.User);
+            var userId = await usersService.GetUserIdAsync(User);
 
-            var reservations = await this.conferenceHallService
+            var reservations = await conferenceHallService
                 .GetAllReservationsAsync<ConfHallAllViewModel>(userId);
 
             var reservationView = new ConfHallViewModel()
@@ -81,7 +81,7 @@
                 AllReservations = reservations,
             };
 
-            return this.View(reservationView);
+            return View(reservationView);
         }
     }
 }

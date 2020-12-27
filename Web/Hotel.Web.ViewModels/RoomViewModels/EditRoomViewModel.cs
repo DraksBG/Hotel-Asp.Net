@@ -2,10 +2,10 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    using Hotel.Common;
-    using Hotel.Data.Models;
-    using Hotel.Data.Models.Enums;
-    using Hotel.Services.Mapping;
+    using Common;
+    using Data.Models;
+    using Data.Models.Enums;
+    using Services.Mapping;
 
     public class EditRoomViewModel : IMapTo<Room>, IMapFrom<Room>
     {
