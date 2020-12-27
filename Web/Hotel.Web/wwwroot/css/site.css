@@ -64,6 +64,11 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
 }
+.clearfix::after {
+    display: block;
+    clear: both;
+    content: "";
+}
 
 .footer {
     position: absolute;
