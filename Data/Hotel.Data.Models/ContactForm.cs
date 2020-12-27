@@ -1,11 +1,12 @@
-﻿using Hotel.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace Hotel.Data.Models
+﻿namespace Hotel.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Text;
+
+    using Hotel.Data.Common.Models;
+
     public class ContactForm : BaseDeletableModel<string>
     {
         public ContactForm()

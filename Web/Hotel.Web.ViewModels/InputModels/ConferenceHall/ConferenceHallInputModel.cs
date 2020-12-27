@@ -1,11 +1,12 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Hotel.Common;
-using Hotel.Data.Models.Enums;
-using Hotel.Web.Infrastructure;
-
-namespace Hotel.Web.ViewModels.InputModels.ConferenceHall
+﻿namespace Hotel.Web.ViewModels.InputModels.ConferenceHall
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    using Hotel.Common;
+    using Hotel.Data.Models.Enums;
+    using Hotel.Web.Infrastructure;
+
     public class ConferenceHallInputModel
     {
         public string UserId { get; set; }

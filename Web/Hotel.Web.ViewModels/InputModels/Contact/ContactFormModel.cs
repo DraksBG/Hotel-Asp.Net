@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Hotel.Common;
-
-namespace Hotel.Web.ViewModels.InputModels.Contact
+﻿namespace Hotel.Web.ViewModels.InputModels.Contact
 {
+    using System.ComponentModel.DataAnnotations;
+
+    using Hotel.Common;
+
     public class ContactFormModel
     {
         [Required(ErrorMessage = GlobalConstants.RequiredField)]

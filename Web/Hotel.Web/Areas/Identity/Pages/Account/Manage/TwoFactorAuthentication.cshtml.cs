@@ -1,12 +1,13 @@
-﻿using System.Threading.Tasks;
-using Hotel.Data.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
-
-namespace Hotel.Web.Areas.Identity.Pages.Account.Manage
+﻿namespace Hotel.Web.Areas.Identity.Pages.Account.Manage
 {
+    using System.Threading.Tasks;
+
+    using Hotel.Data.Models;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
+    using Microsoft.Extensions.Logging;
+
     public class TwoFactorAuthenticationModel : PageModel
     {
         private const string AuthenicatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}";

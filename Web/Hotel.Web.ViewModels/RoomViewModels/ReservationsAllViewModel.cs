@@ -1,9 +1,10 @@
-﻿using System;
-using Hotel.Data.Models;
-using Hotel.Services.Mapping;
-
-namespace Hotel.Web.ViewModels.RoomViewModels
+﻿namespace Hotel.Web.ViewModels.RoomViewModels
 {
+    using System;
+
+    using Hotel.Data.Models;
+    using Hotel.Services.Mapping;
+
     public class ReservationsAllViewModel : IMapFrom<RoomReservation>
     {
         public ApplicationUser User { get; set; }

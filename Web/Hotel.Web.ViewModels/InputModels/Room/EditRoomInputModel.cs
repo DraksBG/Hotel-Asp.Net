@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Hotel.Common;
-using Hotel.Data.Models.Enums;
-
-namespace Hotel.Web.ViewModels.InputModels.Room
+﻿namespace Hotel.Web.ViewModels.InputModels.Room
 {
+    using System.ComponentModel.DataAnnotations;
+
+    using Hotel.Common;
+    using Hotel.Data.Models.Enums;
+
     public class EditRoomInputModel
     {
         [Required(ErrorMessage = GlobalConstants.RequiredField)]

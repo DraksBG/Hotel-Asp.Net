@@ -1,10 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Hotel.Web.ViewModels.InputModels.Room;
-using Hotel.Web.ViewModels.RoomViewModels;
-
-namespace Hotel.Services.Data.Room
+﻿namespace Hotel.Services.Data.Room
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Hotel.Web.ViewModels.InputModels.Room;
+    using Hotel.Web.ViewModels.RoomViewModels;
+
     public interface IRoomsService
     {
         Task<bool> CreateRoomAsync(CreateRoomInputModel input);

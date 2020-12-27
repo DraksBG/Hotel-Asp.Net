@@ -1,9 +1,10 @@
-﻿using System;
-using Hotel.Data.Models;
-using Hotel.Services.Mapping;
-
-namespace Hotel.Web.ViewModels.ConferenceHall
+﻿namespace Hotel.Web.ViewModels.ConferenceHall
 {
+    using System;
+
+    using Hotel.Data.Models;
+    using Hotel.Services.Mapping;
+
     public class ConfHallAllViewModel : IMapFrom<ConferenceHallReservation>, IMapFrom<Data.Models.ConferenceHall>
     {
         public string ConferenceHallId { get; set; }

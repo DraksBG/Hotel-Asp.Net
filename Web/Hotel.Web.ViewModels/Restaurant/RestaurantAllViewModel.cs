@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Hotel.Data.Models;
-using Hotel.Services.Mapping;
-
-namespace Hotel.Web.ViewModels.Restaurant
+﻿namespace Hotel.Web.ViewModels.Restaurant
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    using Hotel.Data.Models;
+    using Hotel.Services.Mapping;
+
     public class RestaurantAllViewModel : IMapFrom<RestaurantReservation>
     {
         public ApplicationUser User { get; set; }

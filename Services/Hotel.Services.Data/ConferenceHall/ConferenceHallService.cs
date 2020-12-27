@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Hotel.Common;
-using Hotel.Data.Common.Repositories;
-using Hotel.Data.Models;
-using Hotel.Services.Mapping;
-using Hotel.Web.ViewModels.InputModels.ConferenceHall;
-using Microsoft.EntityFrameworkCore;
-
-namespace Hotel.Services.Data.ConferenceHall
+﻿namespace Hotel.Services.Data.ConferenceHall
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using Hotel.Common;
+    using Hotel.Data.Common.Repositories;
+    using Hotel.Data.Models;
+    using Hotel.Services.Mapping;
+    using Hotel.Web.ViewModels.InputModels.ConferenceHall;
+    using Microsoft.EntityFrameworkCore;
+
     public class ConferenceHallService : IConferenceHallService
     {
         private readonly IDeletableEntityRepository<ConferenceHallReservation> conferenceHallReservationRepository;

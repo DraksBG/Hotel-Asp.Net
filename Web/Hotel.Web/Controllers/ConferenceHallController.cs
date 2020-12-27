@@ -1,15 +1,16 @@
-﻿using System;
-using System.Threading.Tasks;
-using Hotel.Common;
-using Hotel.Services.Data.ConferenceHall;
-using Hotel.Services.Data.User;
-using Hotel.Web.ViewModels.ConferenceHall;
-using Hotel.Web.ViewModels.InputModels.ConferenceHall;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Hotel.Web.Controllers
+﻿namespace Hotel.Web.Controllers
 {
+    using System;
+    using System.Threading.Tasks;
+
+    using Hotel.Common;
+    using Hotel.Services.Data.ConferenceHall;
+    using Hotel.Services.Data.User;
+    using Hotel.Web.ViewModels.ConferenceHall;
+    using Hotel.Web.ViewModels.InputModels.ConferenceHall;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+
     public class ConferenceHallController : Controller
     {
         private readonly IConferenceHallService conferenceHallService;

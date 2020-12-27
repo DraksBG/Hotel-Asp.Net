@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Hotel.Web.ViewModels.InputModels.Restaurant;
-
-namespace Hotel.Services.Data.Restaurant
+﻿namespace Hotel.Services.Data.Restaurant
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Hotel.Web.ViewModels.InputModels.Restaurant;
+
     public interface IRestaurantService
     {
         Task<bool> ReserveRestaurant(RestaurantInputModel input);

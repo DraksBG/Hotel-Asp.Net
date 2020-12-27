@@ -1,10 +1,11 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Hotel.Data.Common.Models;
-using Hotel.Data.Models.Enums;
-
-namespace Hotel.Data.Models
+﻿namespace Hotel.Data.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    using Hotel.Data.Common.Models;
+    using Hotel.Data.Models.Enums;
+
     public class RoomReservation : BaseDeletableModel<string>
     {
         public RoomReservation()

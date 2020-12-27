@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Hotel.Common;
-using Hotel.Data.Common.Repositories;
-using Hotel.Data.Models;
-using Hotel.Services.Mapping;
-using Hotel.Web.ViewModels.InputModels.Restaurant;
-using Microsoft.EntityFrameworkCore;
-
-namespace Hotel.Services.Data.Restaurant
+﻿namespace Hotel.Services.Data.Restaurant
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using Hotel.Common;
+    using Hotel.Data.Common.Repositories;
+    using Hotel.Data.Models;
+    using Hotel.Services.Mapping;
+    using Hotel.Web.ViewModels.InputModels.Restaurant;
+    using Microsoft.EntityFrameworkCore;
+
     public class RestaurantsService : IRestaurantService
     {
         private readonly IDeletableEntityRepository<Hotel.Data.Models.Restaurant> restaurantRepository;

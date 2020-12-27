@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-namespace Hotel.Web.Controllers
+﻿namespace Hotel.Web.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
+
     public class FitnessController : Controller
     {
         public IActionResult Index()

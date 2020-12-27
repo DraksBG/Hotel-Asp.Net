@@ -1,8 +1,8 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace Hotel.Web.Infrastructure
+﻿namespace Hotel.Web.Infrastructure
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
     public class DateCheckAnnotation : ValidationAttribute
     {
         public DateCheckAnnotation()

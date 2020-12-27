@@ -1,15 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.Text;
-using System.Threading.Tasks;
-using Hotel.Data.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.WebUtilities;
-
-namespace Hotel.Web.Areas.Identity.Pages.Account
+﻿namespace Hotel.Web.Areas.Identity.Pages.Account
 {
+    using System.ComponentModel.DataAnnotations;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using Hotel.Data.Models;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.RazorPages;
+    using Microsoft.AspNetCore.WebUtilities;
+
     [AllowAnonymous]
     public class ResetPasswordModel : PageModel
     {

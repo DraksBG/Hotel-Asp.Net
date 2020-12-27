@@ -1,13 +1,14 @@
-﻿using System.Threading.Tasks;
-using Hotel.Common;
-using Hotel.Web.ViewModels.InputModels.Contact;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using SendGrid;
-using SendGrid.Helpers.Mail;
-
-namespace Hotel.Web.Controllers
+﻿namespace Hotel.Web.Controllers
 {
+    using System.Threading.Tasks;
+
+    using Hotel.Common;
+    using Hotel.Web.ViewModels.InputModels.Contact;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Configuration;
+    using SendGrid;
+    using SendGrid.Helpers.Mail;
+
     public class ContactController : Controller
     {
         private readonly IConfiguration configuration;

@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Hotel.Common;
-using Hotel.Data.Models;
-using Hotel.Data.Models.Enums;
-using Hotel.Services.Mapping;
-
-namespace Hotel.Web.ViewModels.RoomViewModels
+﻿namespace Hotel.Web.ViewModels.RoomViewModels
 {
+    using System.ComponentModel.DataAnnotations;
+
+    using Hotel.Common;
+    using Hotel.Data.Models;
+    using Hotel.Data.Models.Enums;
+    using Hotel.Services.Mapping;
+
     public class EditRoomViewModel : IMapTo<Room>, IMapFrom<Room>
     {
         [Required(ErrorMessage = GlobalConstants.RequiredField)]

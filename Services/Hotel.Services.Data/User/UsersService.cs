@@ -1,11 +1,12 @@
-﻿using System.Security.Claims;
-using System.Threading.Tasks;
-using Hotel.Data.Common.Repositories;
-using Hotel.Data.Models;
-using Microsoft.AspNetCore.Identity;
-
-namespace Hotel.Services.Data.User
+﻿namespace Hotel.Services.Data.User
 {
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
+    using Hotel.Data.Common.Repositories;
+    using Hotel.Data.Models;
+    using Microsoft.AspNetCore.Identity;
+
     public class UsersService : IUsersService
     {
         private readonly IDeletableEntityRepository<ApplicationUser> context;

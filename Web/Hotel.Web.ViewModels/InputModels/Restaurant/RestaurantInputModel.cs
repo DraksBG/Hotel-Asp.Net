@@ -1,12 +1,13 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Hotel.Common;
-using Hotel.Data.Models.Enums;
-using Hotel.Services.Mapping;
-using Hotel.Web.Infrastructure;
-
-namespace Hotel.Web.ViewModels.InputModels.Restaurant
+﻿namespace Hotel.Web.ViewModels.InputModels.Restaurant
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    using Hotel.Common;
+    using Hotel.Data.Models.Enums;
+    using Hotel.Services.Mapping;
+    using Hotel.Web.Infrastructure;
+
     public class RestaurantInputModel : IMapFrom<Hotel.Data.Models.Restaurant>
     {
         [MaxLength(20, ErrorMessage = GlobalConstants.UserNameMaxLength)]

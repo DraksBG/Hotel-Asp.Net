@@ -1,19 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Hotel.Common;
-using Hotel.Data.Common.Repositories;
-using Hotel.Data.Models;
-using Hotel.Services.Data.Cloudinary;
-using Hotel.Services.Data.Picture;
-using Hotel.Services.Mapping;
-using Hotel.Web.ViewModels.InputModels.Room;
-using Hotel.Web.ViewModels.RoomViewModels;
-using Microsoft.EntityFrameworkCore;
-
-namespace Hotel.Services.Data.Room
+﻿namespace Hotel.Services.Data.Room
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using Hotel.Common;
+    using Hotel.Data.Common.Repositories;
+    using Hotel.Data.Models;
+    using Hotel.Services.Data.Cloudinary;
+    using Hotel.Services.Data.Picture;
+    using Hotel.Services.Mapping;
+    using Hotel.Web.ViewModels.InputModels.Room;
+    using Hotel.Web.ViewModels.RoomViewModels;
+    using Microsoft.EntityFrameworkCore;
+
     public class RoomsService : IRoomsService
     {
         private readonly IPictureService pictureService;

@@ -1,11 +1,12 @@
-﻿using CloudinaryDotNet.Actions;
-using Microsoft.AspNetCore.Http;
-using System.IO;
-using System.Threading.Tasks;
-using CloudinaryDotNet;
-
-namespace Hotel.Services.Data.Cloudinary
+﻿namespace Hotel.Services.Data.Cloudinary
 {
+    using System.IO;
+    using System.Threading.Tasks;
+
+    using CloudinaryDotNet;
+    using CloudinaryDotNet.Actions;
+    using Microsoft.AspNetCore.Http;
+
     public class CloudinaryService : ICloudinaryService
     {
         private readonly CloudinaryDotNet.Cloudinary cloudinary;

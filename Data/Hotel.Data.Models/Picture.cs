@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-using Hotel.Data.Common.Models;
-
-namespace Hotel.Data.Models
+﻿namespace Hotel.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Text;
+
+    using Hotel.Data.Common.Models;
+
    public class Picture : BaseDeletableModel<string>
     {
         public Picture()

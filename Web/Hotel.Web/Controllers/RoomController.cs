@@ -1,20 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Hotel.Common;
-using Hotel.Data.Common.Repositories;
-using Hotel.Data.Models;
-using Hotel.Services.Data.Room;
-using Hotel.Services.Data.User;
-using Hotel.Web.ViewModels.InputModels.Room;
-using Hotel.Web.ViewModels.RoomViewModels;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-
-namespace Hotel.Web.Controllers
+﻿namespace Hotel.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using Hotel.Common;
+    using Hotel.Data.Common.Repositories;
+    using Hotel.Data.Models;
+    using Hotel.Services.Data.Room;
+    using Hotel.Services.Data.User;
+    using Hotel.Web.ViewModels.InputModels.Room;
+    using Hotel.Web.ViewModels.RoomViewModels;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.EntityFrameworkCore;
+
     public class RoomController : Controller
     {
         private readonly IRoomsService roomsService;

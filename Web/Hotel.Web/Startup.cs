@@ -1,24 +1,22 @@
-﻿using CloudinaryDotNet;
-using Hotel.Services.Data.Cloudinary;
-using Hotel.Services.Data.ConferenceHall;
-using Hotel.Services.Data.Picture;
-using Hotel.Services.Data.Room;
-using Hotel.Services.Data.User;
-
-namespace Hotel.Web
+﻿namespace Hotel.Web
 {
     using System.Reflection;
 
+    using CloudinaryDotNet;
     using Hotel.Data;
     using Hotel.Data.Common;
     using Hotel.Data.Common.Repositories;
     using Hotel.Data.Models;
     using Hotel.Data.Repositories;
     using Hotel.Data.Seeding;
+    using Hotel.Services.Data.Cloudinary;
+    using Hotel.Services.Data.ConferenceHall;
+    using Hotel.Services.Data.Picture;
+    using Hotel.Services.Data.Room;
+    using Hotel.Services.Data.User;
     using Hotel.Services.Mapping;
     using Hotel.Services.Messaging;
     using Hotel.Web.ViewModels;
-
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Http;

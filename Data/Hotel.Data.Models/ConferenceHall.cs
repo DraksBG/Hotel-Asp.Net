@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Hotel.Data.Common.Models;
-using Hotel.Data.Models.Enums;
-
-namespace Hotel.Data.Models
+﻿namespace Hotel.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    using Hotel.Data.Common.Models;
+    using Hotel.Data.Models.Enums;
+
     public class ConferenceHall : BaseDeletableModel<string>
     {
         public ConferenceHall()

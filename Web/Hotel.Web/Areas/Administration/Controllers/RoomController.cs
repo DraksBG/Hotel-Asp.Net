@@ -1,13 +1,14 @@
-﻿using System.Threading.Tasks;
-using Hotel.Common;
-using Hotel.Services.Data.Room;
-using Hotel.Web.ViewModels.InputModels.Room;
-using Hotel.Web.ViewModels.RoomViewModels;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Hotel.Web.Areas.Administration.Controllers
+﻿namespace Hotel.Web.Areas.Administration.Controllers
 {
+    using System.Threading.Tasks;
+
+    using Hotel.Common;
+    using Hotel.Services.Data.Room;
+    using Hotel.Web.ViewModels.InputModels.Room;
+    using Hotel.Web.ViewModels.RoomViewModels;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+
     public class RoomController : Controller
     {
         private readonly IRoomsService roomsService;

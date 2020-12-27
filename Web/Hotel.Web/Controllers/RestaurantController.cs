@@ -1,22 +1,23 @@
-﻿using System;
-using System.Threading.Tasks;
-using Hotel.Common;
-using Hotel.Data.Common.Repositories;
-using Hotel.Data.Models;
-using Hotel.Services.Data.Restaurant;
-using Hotel.Services.Data.User;
-using Hotel.Web.ViewModels.InputModels.Restaurant;
-using Hotel.Web.ViewModels.Restaurant;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Hotel.Web.Controllers
+﻿namespace Hotel.Web.Controllers
 {
+    using System;
+    using System.Threading.Tasks;
+
+    using Hotel.Common;
+    using Hotel.Data.Common.Repositories;
+    using Hotel.Data.Models;
+    using Hotel.Services.Data.Restaurant;
+    using Hotel.Services.Data.User;
+    using Hotel.Web.ViewModels.InputModels.Restaurant;
+    using Hotel.Web.ViewModels.Restaurant;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
+
     public class RestaurantController : Controller
     {
         private readonly IUsersService usersService;
         private readonly IRestaurantService restaurantService;
-        private readonly IDeletableEntityRepository<RestaurantReservation> restaurantReservationRepository;
+        
 
         public RestaurantController(
             IUsersService usersService,
@@ -25,7 +26,6 @@ namespace Hotel.Web.Controllers
         {
             this.usersService = usersService;
             this.restaurantService = restaurantService;
-            this.restaurantReservationRepository = restaurantReservationRepository;
         }
 
         public IActionResult Index()

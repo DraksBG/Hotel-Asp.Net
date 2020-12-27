@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
-using Hotel.Data.Models;
-using Hotel.Services.Mapping;
-
-namespace Hotel.Web.ViewModels.RoomViewModels
+﻿namespace Hotel.Web.ViewModels.RoomViewModels
 {
+    using System.Collections.Generic;
+    using System.Linq;
+
+    using AutoMapper;
+    using Hotel.Data.Models;
+    using Hotel.Services.Mapping;
+
     public class RoomsAllViewModel : IMapFrom<Room>, IHaveCustomMappings
     {
         public string Id { get; set; }

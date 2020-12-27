@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Hotel.Common;
-using Hotel.Data.Models.Enums;
-using Microsoft.AspNetCore.Http;
-
-namespace Hotel.Web.ViewModels.InputModels.Room
+﻿namespace Hotel.Web.ViewModels.InputModels.Room
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+
+    using Hotel.Common;
+    using Hotel.Data.Models.Enums;
+    using Microsoft.AspNetCore.Http;
+
     public class CreateRoomInputModel
     {
         [Required(ErrorMessage = GlobalConstants.RequiredField)]

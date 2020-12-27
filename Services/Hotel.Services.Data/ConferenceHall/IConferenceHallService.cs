@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Hotel.Web.ViewModels.InputModels.ConferenceHall;
-
-namespace Hotel.Services.Data.ConferenceHall
+﻿namespace Hotel.Services.Data.ConferenceHall
 {
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
+
+    using Hotel.Web.ViewModels.InputModels.ConferenceHall;
+
     public interface IConferenceHallService
     {
         Task<bool> ReserveConferenceHall(ConferenceHallInputModel input);

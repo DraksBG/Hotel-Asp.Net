@@ -1,10 +1,11 @@
-﻿using System;
-using System.Threading.Tasks;
-using Hotel.Common;
-using Hotel.Data.Common.Repositories;
-
-namespace Hotel.Services.Data.Picture
+﻿namespace Hotel.Services.Data.Picture
 {
+    using System;
+    using System.Threading.Tasks;
+
+    using Hotel.Common;
+    using Hotel.Data.Common.Repositories;
+
     public class PictureService : IPictureService
     {
         private readonly IDeletableEntityRepository<Hotel.Data.Models.Picture> pictures;

@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using AutoMapper;
-using Hotel.Common;
-using Hotel.Services.Mapping;
-using Hotel.Web.Infrastructure;
-
-namespace Hotel.Web.ViewModels.InputModels.Room
+﻿namespace Hotel.Web.ViewModels.InputModels.Room
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+
+    using AutoMapper;
+    using Hotel.Common;
+    using Hotel.Services.Mapping;
+    using Hotel.Web.Infrastructure;
+
     public class ReserveRoomInputModel : IHaveCustomMappings
     {
         [MaxLength(20, ErrorMessage = GlobalConstants.UserNameMaxLength)]
