@@ -64,6 +64,9 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
 }
+.jumbotron {
+    box-shadow: none !important
+}
 .clearfix::after {
     display: block;
     clear: both;
