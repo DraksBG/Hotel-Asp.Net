@@ -17,11 +17,8 @@
     {
         private readonly IUsersService usersService;
         private readonly IRestaurantService restaurantService;
-        
-        public RestaurantController(
-            IUsersService usersService,
-            IRestaurantService restaurantService,
-            IDeletableEntityRepository<RestaurantReservation> restaurantReservationRepository)
+
+        public RestaurantController(IUsersService usersService, IRestaurantService restaurantService)
         {
             this.usersService = usersService;
             this.restaurantService = restaurantService;

@@ -40,9 +40,7 @@
 *::after {
   box-sizing: border-box;
 }
-.jumbotron {
-    box-shadow: none !important
-}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;

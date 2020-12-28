@@ -69,7 +69,7 @@ namespace Hotel.Web
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services
-            services.AddTransient<IEmailSender, NullMessageSender>();
+            services.AddTransient<IEmailSender, SendGridEmailSender>();
             services.AddTransient<IUsersService, UsersService>();
             services.AddTransient<IPictureService, PictureService>();
             services.AddTransient<IRoomsService, RoomsService>();
@@ -88,6 +88,13 @@ namespace Hotel.Web
             Cloudinary cloudinaryUtility = new Cloudinary(cloudinaryCredentials);
 
             services.AddSingleton(cloudinaryUtility);
+
+            services.Configure<SendGridEmailSenderOptions>(options =>
+            {
+                options.ApiKey = configuration["ExternalProviders:SendGrid:ApiKey"];
+                options.SenderEmail = configuration["ExternalProviders:SendGrid:SenderEmail"];
+                options.SenderName = configuration["ExternalProviders:SendGrid:SenderName"];
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
