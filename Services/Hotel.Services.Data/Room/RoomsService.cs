@@ -17,7 +17,6 @@
 
     public class RoomsService : IRoomsService
     {
-        private readonly IPictureService pictureService;
         private readonly IDeletableEntityRepository<Room> repository;
         private readonly IDeletableEntityRepository<RoomReservation> roomReservationRepository;
         private readonly ICloudinaryService cloudinaryService;
@@ -28,7 +27,6 @@
             IPictureService pictureService,
             ICloudinaryService cloudinaryService)
         {
-            this.pictureService = pictureService;
             this.repository = repository;
             this.roomReservationRepository = roomReservationRepository;
             this.cloudinaryService = cloudinaryService;
