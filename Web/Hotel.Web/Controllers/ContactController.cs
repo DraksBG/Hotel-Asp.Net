@@ -31,13 +31,13 @@
                 return View(model);
             }
 
-            var apiKey = configuration.GetValue<string>("SendGrid:ApiKey");
+            var apiKey = configuration.GetValue<string>("ExternalProviders:SendGrid:ApiKey");
 
             var client = new SendGridClient(apiKey);
             var name = model.FirstName + " " + model.LastName;
             var from = new EmailAddress(model.Email, name);
             var subject = model.Title;
-            var to = new EmailAddress("dimitarkrustanov@abv.bg", "Hotel");
+            var to = new EmailAddress("dimitarkrustanov@gmail.com", "Hotel");
             var plainTextContent = model.Content;
             var htmlContent = $"<p>{model.Content}</p>";
             var msg = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
