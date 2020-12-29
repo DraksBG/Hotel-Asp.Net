@@ -24,7 +24,6 @@
         public RoomsService(
             IDeletableEntityRepository<Room> repository,
             IDeletableEntityRepository<RoomReservation> roomReservationRepository,
-            IPictureService pictureService,
             ICloudinaryService cloudinaryService)
         {
             this.repository = repository;
